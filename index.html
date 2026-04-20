@@ -7,244 +7,90 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --blue:#1a6b8a;
-      --teal:#2a9d8f;
-      --coral:#e76f51;
-      --sand:#f9f3e8;
-      --white:#fff;
-      --text:#2c3e50;
-      --mid:#5a6e79;
-      --light:#8fa5af;
+      --teal:#2a9d8f;--blue:#1a6b8a;--deep:#0d3b5e;
+      --coral:#e76f51;--gold:#f4a261;
+      --white:#fff;--bg:#f0f8ff;
+      --text:#2c3e50;--mid:#5a6e79;--light:#8fa5af;
       --shadow:rgba(30,60,70,.13);
-      --r:16px;
-      --rs:10px;
-      --t:.22s ease;
+      --r:16px;--rs:10px;--t:.22s ease;
     }
     html{scroll-behavior:smooth}
-    body{
-      font-family:'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-      background:#f0f8ff;
-      min-height:100vh;
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-    }
+    body{font-family:'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);min-height:100vh;color:var(--text);line-height:1.6;overflow-x:hidden}
 
-    /* ===== HERO ===== */
-    .hero{
-      background:linear-gradient(160deg,#0d3b5e 0%,#1a6b8a 45%,#2a9d8f 100%);
-      padding:48px 24px 120px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::after{
-      content:'';
-      position:absolute;
-      bottom:-1px;left:0;right:0;
-      height:80px;
-      background:#f0f8ff;
-      clip-path:ellipse(55% 100% at 50% 100%);
-    }
-    .hero-badge{
-      display:inline-block;
-      background:rgba(255,255,255,.15);
-      border:1px solid rgba(255,255,255,.3);
-      border-radius:50px;
-      padding:5px 18px;
-      font-size:.75rem;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.9);
-      margin-bottom:14px;
-    }
-    .hero h1{
-      font-size:clamp(2rem,5vw,3.2rem);
-      font-weight:800;
-      color:#fff;
-      letter-spacing:-.02em;
-      line-height:1.15;
-      margin-bottom:8px;
-      text-shadow:0 2px 16px rgba(0,0,0,.2);
-    }
+    /* ── HERO ── */
+    .hero{background:linear-gradient(160deg,var(--deep) 0%,var(--blue) 45%,var(--teal) 100%);padding:48px 24px 120px;text-align:center;position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:80px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+    .hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:5px 18px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px}
+    .hero h1{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 16px rgba(0,0,0,.2)}
     .hero-sub{font-size:1rem;color:rgba(255,255,255,.82);margin-bottom:22px}
     .hero-chips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-    .hero-chip{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:50px;
-      padding:5px 14px;
-      font-size:.82rem;
-      color:rgba(255,255,255,.9);
-    }
+    .hero-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:50px;padding:5px 14px;font-size:.82rem;color:rgba(255,255,255,.9)}
 
-    /* ===== PERSON TABS ===== */
-    .person-wrap{
-      max-width:760px;
-      margin:-30px auto 0;
-      padding:0 20px;
-      position:relative;
-      z-index:10;
-    }
-    .person-label{
-      text-align:center;
-      font-size:.72rem;
-      font-weight:600;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--mid);
-      margin-bottom:10px;
-    }
-    .person-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .person-tab{
-      display:flex;align-items:center;gap:9px;
-      padding:11px 26px;
-      background:#fff;
-      border:2px solid #d8e8ef;
-      border-radius:50px;
-      color:var(--mid);
-      font-size:.95rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:all .2s;
-      box-shadow:0 2px 12px var(--shadow);
-    }
+    /* ── PERSON TABS ── */
+    .person-wrap{max-width:760px;margin:-30px auto 0;padding:0 20px;position:relative;z-index:10}
+    .person-label{text-align:center;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
+    .person-tabs{display:flex;gap:10px;justify-content:center}
+    .person-tab{display:flex;align-items:center;gap:9px;padding:11px 26px;background:#fff;border:2px solid #d8e8ef;border-radius:50px;color:var(--mid);font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:0 2px 12px var(--shadow);flex:1;justify-content:center;max-width:180px}
     .person-tab:hover{border-color:var(--teal);color:var(--teal)}
-    .person-tab.active{
-      background:linear-gradient(135deg,#0d3b5e,#2a9d8f);
-      border-color:transparent;
-      color:#fff;
-      box-shadow:0 4px 20px rgba(26,107,138,.35);
-    }
-    .p-avatar{
-      width:28px;height:28px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-size:.9rem;font-weight:700;flex-shrink:0;
-    }
-    .av-d{background:#fff;color:#1a6b8a}
-    .av-h{background:rgba(255,255,255,.25);color:#fff}
-    .av-p{background:rgba(255,255,255,.25);color:#fff}
-    .person-tab:not(.active) .av-d{background:#dff0f5;color:#1a6b8a}
-    .person-tab:not(.active) .av-h{background:#fde8e0;color:#e76f51}
+    .person-tab.active{background:linear-gradient(135deg,var(--deep),var(--teal));border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(26,107,138,.35)}
+    .p-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:700;flex-shrink:0}
+    .person-tab:not(.active) .av-d{background:#dff0f5;color:var(--blue)}
+    .person-tab:not(.active) .av-h{background:#fde8e0;color:var(--coral)}
     .person-tab:not(.active) .av-p{background:#fef3d8;color:#d4a017}
+    .person-tab.active .p-avatar{background:rgba(255,255,255,.25);color:#fff}
 
-    /* ===== PROGRESS ===== */
-    .progress-wrap{
-      max-width:760px;
-      margin:18px auto 0;
-      padding:0 20px;
-    }
+    /* ── PROGRESS ── */
+    .progress-wrap{max-width:760px;margin:18px auto 0;padding:0 20px}
     .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
     .progress-text{font-size:.82rem;color:var(--mid);font-weight:500}
     .progress-pct{font-size:.82rem;color:var(--teal);font-weight:700}
     .progress-bg{background:#dceef5;border-radius:50px;height:8px;overflow:hidden}
-    .progress-fill{
-      height:100%;
-      background:linear-gradient(90deg,var(--teal),#48cae4);
-      border-radius:50px;
-      width:0%;
-      transition:width .5s cubic-bezier(.4,0,.2,1);
-    }
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),#48cae4);border-radius:50px;width:0%;transition:width .5s cubic-bezier(.4,0,.2,1)}
 
-    /* ===== INFO SECTION (flights + hotels) ===== */
-    .info-section{
-      max-width:760px;
-      margin:32px auto 0;
-      padding:0 20px;
+    /* ── GENERATE BTN ── */
+    .gen-wrap{max-width:760px;margin:18px auto 0;padding:0 20px;display:flex;justify-content:center}
+    .gen-btn{
+      display:flex;align-items:center;gap:10px;
+      padding:13px 32px;
+      background:linear-gradient(135deg,var(--deep),var(--teal));
+      color:#fff;border:none;border-radius:50px;
+      font-size:.95rem;font-weight:700;cursor:pointer;
+      box-shadow:0 4px 20px rgba(26,107,138,.35);
+      transition:transform .2s,box-shadow .2s;
+      letter-spacing:.02em;
     }
-    .section-title{
-      font-size:.72rem;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--mid);
-      margin-bottom:12px;
-      padding-left:2px;
-    }
+    .gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,107,138,.45)}
+    .gen-btn:active{transform:translateY(0)}
+    .gen-btn-icon{font-size:1.2rem}
 
-    /* flights */
+    /* ── INFO ── */
+    .info-section{max-width:760px;margin:32px auto 0;padding:0 20px}
+    .section-title{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;padding-left:2px}
+
     .flight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:28px}
-    .flight-card{
-      background:#fff;
-      border-radius:var(--rs);
-      padding:14px 18px;
-      box-shadow:0 2px 14px var(--shadow);
-      display:flex;flex-direction:column;gap:8px;
-    }
+    .flight-card{background:#fff;border-radius:var(--rs);padding:14px 18px;box-shadow:0 2px 14px var(--shadow);display:flex;flex-direction:column;gap:8px}
     .fc-top{display:flex;align-items:center;gap:8px}
     .fc-time{font-size:1.3rem;font-weight:700;color:var(--text);min-width:52px}
     .fc-line{flex:1;height:1px;background:#d0e4ec;position:relative}
-    .fc-line::after{
-      content:'✈';
-      position:absolute;
-      top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      background:#fff;
-      padding:0 4px;
-      color:var(--teal);
-      font-size:.85rem;
-    }
-    .fc-badge{
-      background:#e8f6f4;
-      border:1px solid #b2dcd8;
-      border-radius:4px;
-      padding:1px 6px;
-      font-size:.68rem;
-      color:var(--teal);
-      font-weight:600;
-      margin-right:4px;
-    }
+    .fc-line::after{content:'✈';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:0 4px;color:var(--teal);font-size:.85rem}
+    .fc-badge{background:#e8f6f4;border:1px solid #b2dcd8;border-radius:4px;padding:1px 6px;font-size:.68rem;color:var(--teal);font-weight:600;margin-right:4px}
     .fc-port{font-size:.78rem;color:var(--mid)}
     .fc-num{font-size:.73rem;color:var(--light);margin-top:2px}
 
-    /* hotels */
     .hotel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:32px}
-    .hotel-card{
-      background:#fff;
-      border-radius:var(--rs);
-      overflow:hidden;
-      box-shadow:0 2px 14px var(--shadow);
-      display:flex;gap:0;align-items:stretch;
-    }
-    .hotel-img{
-      width:90px;height:auto;min-height:90px;
-      object-fit:cover;flex-shrink:0;
-      background:#e8f0f5;
-      display:block;
-    }
-    .hotel-card-body{padding:14px 16px;display:flex;flex-direction:column;justify-content:center;}
+    .hotel-card{background:#fff;border-radius:var(--rs);overflow:hidden;box-shadow:0 2px 14px var(--shadow);display:flex;align-items:stretch}
+    .hotel-img{width:90px;height:auto;min-height:90px;object-fit:cover;flex-shrink:0;background:#e8f0f5;display:block}
+    .hotel-card-body{padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
     .hotel-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
     .hotel-detail{font-size:.76rem;color:var(--mid);line-height:1.6}
-    .hotel-link{
-      display:inline-block;margin-top:6px;
-      font-size:.73rem;font-weight:600;
-      color:var(--teal);text-decoration:none;
-      background:#e8f6f4;border-radius:4px;
-      padding:2px 8px;transition:background .2s;
-    }
+    .hotel-link{display:inline-block;margin-top:6px;font-size:.73rem;font-weight:600;color:var(--teal);text-decoration:none;background:#e8f6f4;border-radius:4px;padding:2px 8px;transition:background .2s}
     .hotel-link:hover{background:#c0ebe6}
 
-    /* ===== DAY CARDS ===== */
-    .days-wrap{
-      max-width:760px;
-      margin:0 auto 48px;
-      padding:0 20px;
-      display:flex;flex-direction:column;gap:22px;
-    }
-    .day-card{
-      background:#fff;
-      border-radius:var(--r);
-      box-shadow:0 3px 20px var(--shadow);
-      overflow:hidden;
-      transition:box-shadow var(--t),transform var(--t);
-      animation:fadeUp .45s ease both;
-    }
+    /* ── DAY CARDS ── */
+    .days-wrap{max-width:760px;margin:0 auto 48px;padding:0 20px;display:flex;flex-direction:column;gap:22px}
+    .day-card{background:#fff;border-radius:var(--r);box-shadow:0 3px 20px var(--shadow);overflow:hidden;transition:box-shadow var(--t),transform var(--t);animation:fadeUp .45s ease both}
     .day-card:hover{box-shadow:0 8px 36px rgba(30,60,70,.18);transform:translateY(-2px)}
-    .day-card:nth-child(1){animation-delay:.05s}
-    .day-card:nth-child(2){animation-delay:.11s}
-    .day-card:nth-child(3){animation-delay:.17s}
-    .day-card:nth-child(4){animation-delay:.23s}
-    .day-card:nth-child(5){animation-delay:.29s}
+    .day-card:nth-child(1){animation-delay:.05s}.day-card:nth-child(2){animation-delay:.11s}.day-card:nth-child(3){animation-delay:.17s}.day-card:nth-child(4){animation-delay:.23s}.day-card:nth-child(5){animation-delay:.29s}
 
     .card-stripe{height:4px}
     .d1 .card-stripe{background:linear-gradient(90deg,#0d3b5e,#2a9d8f)}
@@ -253,11 +99,7 @@
     .d4 .card-stripe{background:linear-gradient(90deg,#06d6a0,#1b9aaa)}
     .d5 .card-stripe{background:linear-gradient(90deg,#f4d35e,#ee964b)}
 
-    .card-head{
-      padding:18px 22px 14px;
-      display:flex;align-items:flex-start;gap:14px;
-      border-bottom:1px solid #edf2f5;
-    }
+    .card-head{padding:18px 22px 14px;display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid #edf2f5}
     .card-emoji{font-size:2.2rem;flex-shrink:0;line-height:1;filter:drop-shadow(0 1px 3px rgba(0,0,0,.1))}
     .card-htext{flex:1}
     .card-date{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--light);margin-bottom:3px}
@@ -265,93 +107,56 @@
     .card-route{font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
     .r-arrow{color:var(--coral);font-weight:700}
     .card-ftags{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
-    .ftag{
-      background:#e8f6f4;border:1px solid #b2dcd8;
-      border-radius:5px;padding:1px 8px;
-      font-size:.72rem;color:var(--teal);font-weight:600;
-    }
+    .ftag{background:#e8f6f4;border:1px solid #b2dcd8;border-radius:5px;padding:1px 8px;font-size:.72rem;color:var(--teal);font-weight:600}
     .card-counter{flex-shrink:0;text-align:center;align-self:center}
     .c-num{font-size:1.35rem;font-weight:700;color:var(--teal);line-height:1}
     .c-label{font-size:.64rem;color:var(--light);letter-spacing:.04em}
 
-    /* card body */
     .card-body{padding:16px 22px 20px}
-    .subsect-title{
-      font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-      color:var(--light);margin-bottom:10px;margin-top:14px;
-    }
+    .subsect-title{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:10px;margin-top:14px}
     .subsect-title:first-child{margin-top:0}
 
-    /* === SPOT CARDS (with image) === */
-    .spots-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-      gap:10px;
-      margin-bottom:4px;
+    /* ── SPOTS SCROLL ROW ── */
+    .spots-scroll-wrap{position:relative;margin-bottom:4px}
+    .spots-scroll{
+      display:flex;gap:12px;
+      overflow-x:auto;
+      padding:4px 0 12px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      cursor:grab;
+      scrollbar-width:none;
     }
+    .spots-scroll::-webkit-scrollbar{display:none}
+    .spots-scroll.grabbing{cursor:grabbing}
     .spot-card{
-      border-radius:12px;
-      overflow:hidden;
+      flex:0 0 200px;
+      border-radius:14px;overflow:hidden;
       border:1.5px solid #e2eff5;
-      transition:all .2s;
       background:#fff;
-      cursor:default;
+      scroll-snap-align:start;
+      transition:border-color .2s,box-shadow .2s,transform .2s;
     }
-    .spot-card:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(42,157,143,.15);transform:translateY(-2px)}
-    .spot-img{
-      width:100%;height:120px;
-      object-fit:cover;
-      background:linear-gradient(135deg,#d0e8f0,#b8dce8);
-      display:block;
-    }
-    .spot-img-placeholder{
-      width:100%;height:120px;
-      display:flex;align-items:center;justify-content:center;
-      font-size:2.4rem;
-      background:linear-gradient(135deg,#e0f4f1,#d0e8f0);
-    }
-    .spot-info{padding:10px 12px 10px}
-    .spot-name{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:3px}
-    .spot-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px}
-    .spot-rating{font-size:.75rem;color:#f4a261}
-    .spot-type{font-size:.7rem;color:var(--light)}
-    .spot-link{
-      display:inline-block;margin-top:6px;
-      font-size:.72rem;font-weight:600;
-      color:var(--white);background:var(--teal);
-      border-radius:5px;padding:3px 10px;
-      text-decoration:none;transition:background .2s;
-    }
+    .spot-card:hover{border-color:var(--teal);box-shadow:0 4px 18px rgba(42,157,143,.18);transform:translateY(-2px)}
+    .spot-img{width:100%;height:120px;object-fit:cover;background:linear-gradient(135deg,#d0e8f0,#b8dce8);display:block}
+    .spot-img-placeholder{width:100%;height:120px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:linear-gradient(135deg,#e0f4f1,#d0e8f0)}
+    .spot-info{padding:10px 12px 12px}
+    .spot-name{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .spot-meta{margin-bottom:4px}
+    .spot-rating{font-size:.74rem;color:#f4a261;display:block}
+    .spot-type{font-size:.68rem;color:var(--light);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .spot-link{display:inline-block;margin-top:6px;font-size:.71rem;font-weight:600;color:#fff;background:var(--teal);border-radius:5px;padding:3px 10px;text-decoration:none;transition:background .2s}
     .spot-link:hover{background:#1e7a70}
+    /* scroll hint fade */
+    .spots-scroll-wrap::after{content:'';position:absolute;right:0;top:0;bottom:12px;width:36px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9));pointer-events:none;border-radius:0 14px 14px 0}
 
-    /* === ACTIVITY ITEMS === */
-    .acts-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(195px,1fr));
-      gap:8px;
-    }
-    .act-item{
-      display:flex;align-items:center;gap:9px;
-      padding:9px 12px;
-      background:#f5fbfa;
-      border-radius:var(--rs);
-      border:1.5px solid transparent;
-      cursor:pointer;
-      transition:background var(--t),border-color var(--t),transform var(--t);
-      user-select:none;
-    }
+    /* ── ACTIVITY ITEMS ── */
+    .acts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:8px}
+    .act-item{display:flex;align-items:center;gap:9px;padding:9px 12px;background:#f5fbfa;border-radius:var(--rs);border:1.5px solid transparent;cursor:pointer;transition:background var(--t),border-color var(--t),transform var(--t);user-select:none}
     .act-item:hover{background:#e8f7f5;border-color:#a8d8d3;transform:scale(1.01)}
     .act-item.checked{background:linear-gradient(135deg,#e0f5f2,#c8ede8);border-color:var(--teal)}
     .act-item input[type=checkbox]{display:none}
-    .cb-box{
-      width:19px;height:19px;
-      border:2px solid #c0d8e0;
-      border-radius:5px;
-      display:flex;align-items:center;justify-content:center;
-      flex-shrink:0;
-      transition:all var(--t);
-      background:#fff;
-    }
+    .cb-box{width:19px;height:19px;border:2px solid #c0d8e0;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--t);background:#fff}
     .act-item.checked .cb-box{background:var(--teal);border-color:var(--teal)}
     .cb-tick{display:none;color:#fff;font-size:11px;font-weight:700;line-height:1}
     .act-item.checked .cb-tick{display:block}
@@ -359,103 +164,145 @@
     .act-text{font-size:.84rem;color:var(--text);font-weight:500;line-height:1.3}
     .act-item.checked .act-text{color:var(--teal)}
 
-    /* ===== FOOTER ===== */
-    footer{
-      max-width:760px;margin:0 auto 56px;
-      padding:0 20px;
-    }
-    .footer-inner{
-      background:#fff;border-radius:var(--r);
-      padding:16px 22px;
-      box-shadow:0 2px 14px var(--shadow);
-      display:flex;align-items:center;justify-content:space-between;
-      gap:12px;flex-wrap:wrap;
-    }
+    /* ── FOOTER ── */
+    footer{max-width:760px;margin:0 auto 56px;padding:0 20px}
+    .footer-inner{background:#fff;border-radius:var(--r);padding:16px 22px;box-shadow:0 2px 14px var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .footer-tip{font-size:.82rem;color:var(--mid)}
-    .reset-btn{
-      background:none;border:1.5px solid var(--coral);
-      color:var(--coral);border-radius:50px;
-      padding:6px 18px;font-size:.8rem;font-weight:600;
-      cursor:pointer;transition:all .2s;
-    }
+    .reset-btn{background:none;border:1.5px solid var(--coral);color:var(--coral);border-radius:50px;padding:6px 18px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
     .reset-btn:hover{background:var(--coral);color:#fff}
 
+    /* ══════════════════════════════════
+       TIMELINE MODAL
+    ══════════════════════════════════ */
+    .modal-overlay{
+      position:fixed;inset:0;z-index:1000;
+      background:rgba(10,30,45,.65);
+      backdrop-filter:blur(6px);
+      display:flex;align-items:flex-end;justify-content:center;
+      opacity:0;pointer-events:none;
+      transition:opacity .3s ease;
+    }
+    .modal-overlay.open{opacity:1;pointer-events:all}
+    .modal-sheet{
+      background:#fff;
+      border-radius:24px 24px 0 0;
+      width:100%;max-width:800px;
+      max-height:92vh;
+      display:flex;flex-direction:column;
+      transform:translateY(100%);
+      transition:transform .4s cubic-bezier(.32,0,.15,1);
+      overflow:hidden;
+    }
+    .modal-overlay.open .modal-sheet{transform:translateY(0)}
+    .modal-handle{
+      width:40px;height:4px;background:#ddd;border-radius:2px;
+      margin:12px auto 0;flex-shrink:0;
+    }
+    .modal-head{
+      padding:16px 24px 14px;
+      border-bottom:1px solid #eef2f5;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-shrink:0;
+    }
+    .modal-title{font-size:1.1rem;font-weight:700;color:var(--text)}
+    .modal-subtitle{font-size:.78rem;color:var(--mid);margin-top:2px}
+    .modal-close{
+      width:32px;height:32px;border-radius:50%;
+      background:#f0f4f7;border:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;color:var(--mid);transition:background .2s;flex-shrink:0;
+    }
+    .modal-close:hover{background:#e0e8ee}
+    .modal-body{overflow-y:auto;padding:20px 24px 32px;flex:1}
+
+    /* Timeline */
+    .tl-day{margin-bottom:28px}
+    .tl-day-head{
+      display:flex;align-items:center;gap:12px;
+      margin-bottom:14px;
+    }
+    .tl-day-dot{
+      width:40px;height:40px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.3rem;flex-shrink:0;
+      box-shadow:0 2px 10px var(--shadow);
+    }
+    .tl-d1 .tl-day-dot{background:linear-gradient(135deg,#0d3b5e,#2a9d8f)}
+    .tl-d2 .tl-day-dot{background:linear-gradient(135deg,#e9c46a,#f4a261)}
+    .tl-d3 .tl-day-dot{background:linear-gradient(135deg,#48cae4,#0096c7)}
+    .tl-d4 .tl-day-dot{background:linear-gradient(135deg,#06d6a0,#1b9aaa)}
+    .tl-d5 .tl-day-dot{background:linear-gradient(135deg,#f4d35e,#ee964b)}
+    .tl-day-info{}
+    .tl-day-date{font-size:.7rem;color:var(--light);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+    .tl-day-title{font-size:.98rem;font-weight:700;color:var(--text)}
+
+    .tl-items{
+      padding-left:20px;
+      border-left:2px dashed #d8eaef;
+      margin-left:20px;
+      display:flex;flex-direction:column;gap:8px;
+    }
+    .tl-item{
+      display:flex;align-items:center;gap:10px;
+      background:#f5fbfa;border-radius:10px;
+      padding:9px 14px;
+      position:relative;
+    }
+    .tl-item::before{
+      content:'';position:absolute;
+      left:-26px;top:50%;transform:translateY(-50%);
+      width:10px;height:10px;border-radius:50%;
+      background:var(--teal);border:2px solid #fff;
+      box-shadow:0 0 0 2px var(--teal);
+    }
+    .tl-item-emoji{font-size:1.1rem;flex-shrink:0}
+    .tl-item-text{font-size:.86rem;color:var(--text);font-weight:500}
+
+    .tl-empty{
+      text-align:center;padding:40px 20px;color:var(--light);
+    }
+    .tl-empty-icon{font-size:2.8rem;margin-bottom:10px}
+    .tl-empty-text{font-size:.9rem}
+
+    .tl-spots{margin-top:10px;margin-bottom:2px}
+    .tl-spot-chip{
+      display:inline-flex;align-items:center;gap:5px;
+      background:#e8f6f4;border:1px solid #b2dcd8;
+      border-radius:20px;padding:4px 10px;
+      font-size:.76rem;color:var(--teal);font-weight:600;
+      margin:3px 4px 3px 0;
+    }
+    .tl-spot-chip a{color:inherit;text-decoration:none}
+
+    /* no-selection state */
+    .tl-day.no-sel .tl-items{opacity:.4}
+
     /* scrollbar */
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:transparent}
-    ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
+    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
 
-    /* ===== MOBILE ===== */
+    /* ── RESPONSIVE ── */
     @media(max-width:640px){
-      /* hero */
-      .hero{padding:36px 16px 100px}
-      .hero h1{font-size:1.8rem}
-      .hero-sub{font-size:.88rem}
-      .hero-chips{gap:6px}
-      .hero-chip{font-size:.75rem;padding:4px 10px}
-
-      /* person tabs — 三等分一行 */
-      .person-wrap{padding:0 14px}
-      .person-tabs{gap:8px;flex-wrap:nowrap}
-      .person-tab{padding:10px 0;font-size:.85rem;flex:1 1 0;justify-content:center;min-width:0;border-radius:14px}
-      .p-avatar{width:26px;height:26px;font-size:.8rem;flex-shrink:0}
-
-      /* progress */
-      .progress-wrap{padding:0 14px}
-      .progress-text,.progress-pct{font-size:.78rem}
-
-      /* info section */
-      .info-section{padding:0 14px}
-      .flight-grid{grid-template-columns:1fr}
-      .fc-time{font-size:1.1rem;min-width:44px}
-
-      /* hotel — stack image on top on mobile */
-      .hotel-grid{grid-template-columns:1fr}
-      .hotel-card{flex-direction:column;align-items:stretch}
-      .hotel-img{width:100%;height:160px;min-height:unset;border-radius:0}
-      .hotel-card-body{padding:14px 16px}
-      .hotel-name{font-size:.92rem}
-      .hotel-detail{font-size:.75rem}
-
-      /* day cards */
-      .days-wrap{padding:0 14px;gap:16px}
-      .card-head{padding:14px 14px 10px}
-      .card-emoji{font-size:1.9rem}
-      .card-title{font-size:1rem}
-      .card-route{font-size:.76rem}
-      .card-body{padding:12px 14px 16px}
-
-      /* spots — single column on small phones, 2 col on bigger */
-      .spots-grid{grid-template-columns:1fr 1fr;gap:8px}
-      .spot-img,.spot-img-placeholder{height:100px}
-      .spot-name{font-size:.82rem}
-      .spot-rating{font-size:.7rem}
-      .spot-type{font-size:.65rem}
-      .spot-link{font-size:.68rem;padding:2px 7px}
-      .spot-info{padding:8px 10px 10px}
-
-      /* activities — 1 column */
-      .acts-grid{grid-template-columns:1fr}
-      .act-item{padding:10px 12px}
-      .act-text{font-size:.87rem}
-
-      /* footer */
+      .hero{padding:36px 16px 100px}.hero h1{font-size:1.8rem}.hero-sub{font-size:.88rem}.hero-chips{gap:6px}.hero-chip{font-size:.75rem;padding:4px 10px}
+      .person-wrap{padding:0 14px}.person-tabs{gap:8px}.person-tab{padding:10px 0;font-size:.85rem;border-radius:14px;max-width:none}
+      .p-avatar{width:24px;height:24px;font-size:.78rem}
+      .progress-wrap{padding:0 14px}.progress-text,.progress-pct{font-size:.78rem}
+      .gen-wrap{padding:0 14px}.gen-btn{width:100%;justify-content:center;padding:13px 20px;font-size:.9rem}
+      .info-section{padding:0 14px}.flight-grid{grid-template-columns:1fr}.fc-time{font-size:1.1rem;min-width:44px}
+      .hotel-grid{grid-template-columns:1fr}.hotel-card{flex-direction:column}.hotel-img{width:100%;height:150px;min-height:unset}.hotel-card-body{padding:12px 14px}
+      .days-wrap{padding:0 14px;gap:16px}.card-head{padding:14px 14px 10px}.card-emoji{font-size:1.9rem}.card-title{font-size:1rem}.card-body{padding:12px 14px 16px}
+      .spot-card{flex:0 0 170px}.spot-img,.spot-img-placeholder{height:100px}.spot-name{font-size:.8rem}
+      .acts-grid{grid-template-columns:1fr}.act-item{padding:10px 12px}.act-text{font-size:.87rem}
       .footer-inner{flex-direction:column;text-align:center;gap:10px}
       footer{padding:0 14px 40px}
-
-      /* subsect title */
-      .subsect-title{font-size:.65rem}
+      .modal-body{padding:16px 16px 28px}
+      .modal-head{padding:14px 16px 12px}
+      .tl-items{padding-left:16px;margin-left:16px}
+      .tl-item::before{left:-22px}
     }
-
     @media(max-width:400px){
-      .spots-grid{grid-template-columns:1fr}
-      .person-tab{font-size:.82rem;padding:8px 12px}
-      .hero h1{font-size:1.6rem}
+      .hero h1{font-size:1.6rem}.person-tab{font-size:.8rem}
     }
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(18px)}
-      to{opacity:1;transform:translateY(0)}
-    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
@@ -497,90 +344,54 @@
   <div class="progress-bg"><div class="progress-fill" id="prog-fill"></div></div>
 </div>
 
-<!-- FLIGHTS -->
+<!-- GENERATE BTN -->
+<div class="gen-wrap">
+  <button class="gen-btn" onclick="openTimeline()">
+    <span class="gen-btn-icon">🗺️</span>
+    生成我的行程时间轴
+  </button>
+</div>
+
+<!-- INFO -->
 <div class="info-section">
   <div class="section-title">✈️ 航班信息</div>
   <div class="flight-grid">
     <div class="flight-card">
-      <div class="fc-top">
-        <div class="fc-time">07:30</div>
-        <div class="fc-line"></div>
-        <div class="fc-time" style="text-align:right">11:05</div>
-      </div>
-      <div style="display:flex;justify-content:space-between">
-        <div><span class="fc-badge">4/30</span><span class="fc-port">上海浦东 T2</span></div>
-        <div class="fc-port">曼谷素万那普</div>
-      </div>
+      <div class="fc-top"><div class="fc-time">07:30</div><div class="fc-line"></div><div class="fc-time" style="text-align:right">11:05</div></div>
+      <div style="display:flex;justify-content:space-between"><div><span class="fc-badge">4/30</span><span class="fc-port">上海浦东 T2</span></div><div class="fc-port">曼谷素万那普</div></div>
       <div class="fc-num">TG663 · 泰国航空</div>
     </div>
     <div class="flight-card">
-      <div class="fc-top">
-        <div class="fc-time">11:40</div>
-        <div class="fc-line"></div>
-        <div class="fc-time" style="text-align:right">12:45</div>
-      </div>
-      <div style="display:flex;justify-content:space-between">
-        <div><span class="fc-badge">5/1</span><span class="fc-port">曼谷素万那普</span></div>
-        <div class="fc-port">苏梅国际 T1</div>
-      </div>
+      <div class="fc-top"><div class="fc-time">11:40</div><div class="fc-line"></div><div class="fc-time" style="text-align:right">12:45</div></div>
+      <div style="display:flex;justify-content:space-between"><div><span class="fc-badge">5/1</span><span class="fc-port">曼谷素万那普</span></div><div class="fc-port">苏梅国际 T1</div></div>
       <div class="fc-num">PG133 · 曼谷航空</div>
     </div>
     <div class="flight-card">
-      <div class="fc-top">
-        <div class="fc-time">19:10</div>
-        <div class="fc-line"></div>
-        <div class="fc-time" style="text-align:right">20:25</div>
-      </div>
-      <div style="display:flex;justify-content:space-between">
-        <div><span class="fc-badge">5/4</span><span class="fc-port">苏梅国际 T1</span></div>
-        <div class="fc-port">曼谷素万那普</div>
-      </div>
+      <div class="fc-top"><div class="fc-time">19:10</div><div class="fc-line"></div><div class="fc-time" style="text-align:right">20:25</div></div>
+      <div style="display:flex;justify-content:space-between"><div><span class="fc-badge">5/4</span><span class="fc-port">苏梅国际 T1</span></div><div class="fc-port">曼谷素万那普</div></div>
       <div class="fc-num">PG180 · 曼谷航空</div>
     </div>
     <div class="flight-card">
-      <div class="fc-top">
-        <div class="fc-time">00:30</div>
-        <div class="fc-line"></div>
-        <div class="fc-time" style="text-align:right">05:45</div>
-      </div>
-      <div style="display:flex;justify-content:space-between">
-        <div><span class="fc-badge">5/5</span><span class="fc-port">曼谷素万那普</span></div>
-        <div class="fc-port">上海浦东 T2</div>
-      </div>
+      <div class="fc-top"><div class="fc-time">00:30</div><div class="fc-line"></div><div class="fc-time" style="text-align:right">05:45</div></div>
+      <div style="display:flex;justify-content:space-between"><div><span class="fc-badge">5/5</span><span class="fc-port">曼谷素万那普</span></div><div class="fc-port">上海浦东 T2</div></div>
       <div class="fc-num">TG662 · 泰国航空</div>
     </div>
   </div>
-
-  <!-- HOTELS -->
   <div class="section-title">🏨 住宿安排</div>
   <div class="hotel-grid">
     <div class="hotel-card">
-      <img class="hotel-img"
-        src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=300&q=80"
-        alt="Kimpton Maa-Lai Bangkok"
-        onerror="this.style.display='none'"/>
+      <img class="hotel-img" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=300&q=80" alt="Kimpton" onerror="this.style.display='none'"/>
       <div class="hotel-card-body">
         <div class="hotel-name">Kimpton Maa-Lai Bangkok</div>
-        <div class="hotel-detail">
-          曼谷金普顿玛莱酒店 ⭐4.9<br>
-          78 Soi Ton Son, Lumphini<br>
-          📅 4/30 入住 → 5/1 退房
-        </div>
+        <div class="hotel-detail">曼谷金普顿玛莱 ⭐4.9<br>78 Soi Ton Son, Lumphini<br>📅 4/30 入住 → 5/1 退房</div>
         <a class="hotel-link" href="https://www.kimptonmaalaibangkok.com/" target="_blank">官网 →</a>
       </div>
     </div>
     <div class="hotel-card">
-      <img class="hotel-img"
-        src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=300&q=80"
-        alt="Banyan Tree Samui"
-        onerror="this.style.display='none'"/>
+      <img class="hotel-img" src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=300&q=80" alt="Banyan Tree" onerror="this.style.display='none'"/>
       <div class="hotel-card-body">
         <div class="hotel-name">Banyan Tree Samui</div>
-        <div class="hotel-detail">
-          苏梅岛悦榕庄 ⭐4.8<br>
-          99/9 Moo 4, Maret, Koh Samui<br>
-          📅 5/1 入住（15:00）→ 5/4 退房
-        </div>
+        <div class="hotel-detail">苏梅岛悦榕庄 ⭐4.8<br>99/9 Moo 4, Maret, Koh Samui<br>📅 5/1 入住（15:00）→ 5/4 退房</div>
         <a class="hotel-link" href="https://www.banyantree.com/thailand/samui" target="_blank">官网 →</a>
       </div>
     </div>
@@ -598,232 +409,152 @@
   </div>
 </footer>
 
+<!-- TIMELINE MODAL -->
+<div class="modal-overlay" id="modal" onclick="onOverlayClick(event)">
+  <div class="modal-sheet" id="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="modal-title">🗺️ 我的行程时间轴</div>
+        <div class="modal-subtitle" id="modal-subtitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeTimeline()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
 <script>
-// ===== 数据 =====
+// ══════════════ DATA ══════════════
 let cur = 'damen';
+const personName = {damen:'大门',huoshan:'火山',panpan:'攀攀'};
 
 const days = [
   {
-    id:'d1', cls:'d1', emoji:'✈️',
-    date:'4月30日（周三）', title:'启程！飞向曼谷',
+    id:'d1',cls:'d1',emoji:'✈️',
+    date:'4月30日（周三）',title:'启程！飞向曼谷',
     route:['上海浦东 07:30','曼谷素万那普 11:05'],
     ftags:['TG663','泰国航空'],
     spots:[
-      {
-        name:'Kimpton Maa-Lai Bangkok',
-        type:'5星豪华酒店',rating:'★★★★★ 4.9',
-        emoji:'🏨',
-        img:'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&q=80',
-        url:'https://www.kimptonmaalaibangkok.com/'
-      },
-      {
-        name:'Bar Us — The Drinking Room',
-        type:'鸡尾酒酒吧 · 世界50最佳#15',rating:'★★★★★ 4.7',
-        emoji:'🍸',
-        img:'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=80',
-        url:'https://www.us-bar.com/'
-      },
-      {
-        name:'Phensiri Thai Restaurant',
-        type:'米其林推荐泰式餐厅',rating:'★★★★ 4.4',
-        emoji:'🍜',
-        img:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&q=80',
-        url:'https://www.phensiri.com/'
-      },
+      {name:'Kimpton Maa-Lai Bangkok',type:'5星豪华酒店',rating:'★★★★★ 4.9',emoji:'🏨',img:'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&q=80',url:'https://www.kimptonmaalaibangkok.com/'},
+      {name:'Bar Us — The Drinking Room',type:'鸡尾酒酒吧 · 世界50最佳#15',rating:'★★★★★ 4.7',emoji:'🍸',img:'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=80',url:'https://www.us-bar.com/'},
+      {name:'Phensiri Thai Restaurant',type:'米其林推荐泰式餐厅',rating:'★★★★ 4.4',emoji:'🍜',img:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&q=80',url:'https://www.phensiri.com/'},
     ],
     acts:[
-      {e:'💆',t:'泰式传统按摩'},
-      {e:'🏯',t:'大皇宫 & 玉佛寺'},
-      {e:'🛺',t:'嘟嘟车市区游览'},
-      {e:'🛶',t:'湄南河游船'},
-      {e:'🏛️',t:'卧佛寺参观'},
-      {e:'🌃',t:'考山路夜生活'},
-      {e:'🛍️',t:'暹罗百丽宫/ICON SIAM购物'},
-      {e:'🍜',t:'Phensiri 米其林泰餐'},
-      {e:'🍸',t:'Bar Us 世界顶级鸡尾酒'},
-      {e:'🍢',t:'街边小吃探索'},
-      {e:'🌊',t:'乍都乍周末市集'},
-      {e:'🌅',t:'湄南河日落游船'},
-      {e:'🧘',t:'泰式瑜伽体验'},
-      {e:'📸',t:'金普顿酒店拍照打卡'},
+      {e:'💆',t:'泰式传统按摩'},{e:'🏯',t:'大皇宫 & 玉佛寺'},{e:'🛺',t:'嘟嘟车市区游览'},
+      {e:'🛶',t:'湄南河游船'},{e:'🏛️',t:'卧佛寺参观'},{e:'🌃',t:'考山路夜生活'},
+      {e:'🛍️',t:'暹罗百丽宫/ICON SIAM购物'},{e:'🍜',t:'Phensiri 米其林泰餐'},
+      {e:'🍸',t:'Bar Us 世界顶级鸡尾酒'},{e:'🍢',t:'街边小吃探索'},
+      {e:'🌊',t:'乍都乍周末市集'},{e:'🌅',t:'湄南河日落游船'},
+      {e:'🧘',t:'泰式瑜伽体验'},{e:'📸',t:'金普顿酒店拍照打卡'},
     ]
   },
   {
-    id:'d2', cls:'d2', emoji:'🛫',
-    date:'5月1日（周四）', title:'曼谷 → 苏梅岛',
+    id:'d2',cls:'d2',emoji:'🛫',
+    date:'5月1日（周四）',title:'曼谷 → 苏梅岛',
     route:['曼谷素万那普 11:40','苏梅国际 12:45'],
     ftags:['PG133','曼谷航空'],
     spots:[
-      {
-        name:'Banyan Tree Samui',
-        type:'5星度假村 · 私人泳池别墅',rating:'★★★★★ 4.8',
-        emoji:'🌴',
-        img:'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&q=80',
-        url:'https://www.banyantree.com/thailand/samui'
-      },
+      {name:'Banyan Tree Samui',type:'5星度假村 · 私人泳池别墅',rating:'★★★★★ 4.8',emoji:'🌴',img:'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&q=80',url:'https://www.banyantree.com/thailand/samui'},
     ],
     acts:[
-      {e:'🛒',t:'素万那普免税店扫货'},
-      {e:'🍜',t:'机场 Food Court'},
-      {e:'🌊',t:'落地即奔海边'},
-      {e:'🏊',t:'悦榕庄私人泳池'},
-      {e:'🍹',t:'入住欢迎饮品'},
-      {e:'🌅',t:'查汶海滩看日落'},
-      {e:'🦞',t:'码头海鲜晚餐'},
-      {e:'💆',t:'悦榕庄 Spa 初体验'},
+      {e:'🛒',t:'素万那普免税店扫货'},{e:'🍜',t:'机场 Food Court'},
+      {e:'🌊',t:'落地即奔海边'},{e:'🏊',t:'悦榕庄私人泳池'},
+      {e:'🍹',t:'入住欢迎饮品'},{e:'🌅',t:'查汶海滩看日落'},
+      {e:'🦞',t:'码头海鲜晚餐'},{e:'💆',t:'悦榕庄 Spa 初体验'},
       {e:'📸',t:'别墅露台拍照'},
     ]
   },
   {
-    id:'d3', cls:'d3', emoji:'🏖️',
-    date:'5月2日（周五）', title:'苏梅岛 · 海岛探索日',
-    route:['苏梅岛'],
-    ftags:null,
+    id:'d3',cls:'d3',emoji:'🏖️',
+    date:'5月2日（周五）',title:'苏梅岛 · 海岛探索日',
+    route:['苏梅岛'],ftags:null,
     spots:[
-      {
-        name:'Tree Bridge Zipline',
-        type:'丛林飞索 · 1900 THB/人',rating:'★★★★★ 4.6',
-        emoji:'🌿',
-        img:'https://images.unsplash.com/photo-1547483238-f400e65ccd56?w=400&q=80',
-        url:'https://www.treebridgezipline.com/'
-      },
-      {
-        name:'Ark Bar Beach Club',
-        type:'海滩酒吧 · 火焰表演',rating:'★★★★ 4.2',
-        emoji:'🔥',
-        img:'https://images.unsplash.com/photo-1533777324565-a040eb52facd?w=400&q=80',
-        url:'https://www.ark-bar.com/'
-      },
-      {
-        name:'Lamai Night Market',
-        type:'夜市 · 每日17:00-00:00',rating:'★★★★ 4.2',
-        emoji:'🌙',
-        img:'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=400&q=80',
-        url:'https://www.instagram.com/lamainightmarket/'
-      },
+      {name:'Tree Bridge Zipline',type:'丛林飞索 · 1900 THB/人',rating:'★★★★★ 4.6',emoji:'🌿',img:'https://images.unsplash.com/photo-1547483238-f400e65ccd56?w=400&q=80',url:'https://www.treebridgezipline.com/'},
+      {name:'Ark Bar Beach Club',type:'海滩酒吧 · 火焰表演',rating:'★★★★ 4.2',emoji:'🔥',img:'https://images.unsplash.com/photo-1533777324565-a040eb52facd?w=400&q=80',url:'https://www.ark-bar.com/'},
+      {name:'Lamai Night Market',type:'夜市 · 每日17:00-00:00',rating:'★★★★ 4.2',emoji:'🌙',img:'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=400&q=80',url:'https://www.instagram.com/lamainightmarket/'},
     ],
     acts:[
-      {e:'🏊',t:'查汶海滩游泳'},
-      {e:'🤿',t:'浮潜/玻璃底船出海'},
-      {e:'🛵',t:'骑摩托环岛'},
-      {e:'🌿',t:'Tree Bridge 丛林飞索'},
-      {e:'💅',t:'泰式 SPA 下午'},
-      {e:'🔥',t:'Ark Bar 火焰表演+派对'},
-      {e:'🌙',t:'Lamai 夜市烧烤扫货'},
-      {e:'🐘',t:'大象营互动体验'},
-      {e:'🚣',t:'独木舟/皮划艇'},
-      {e:'🌅',t:'塔玛林海滩日落'},
-      {e:'🍺',t:'Chaweng 海边酒吧'},
-      {e:'🏄',t:'冲浪体验课'},
-      {e:'📸',t:'网红海滩拍照'},
-      {e:'🧖',t:'泥浆浴体验'},
+      {e:'🏊',t:'查汶海滩游泳'},{e:'🤿',t:'浮潜/玻璃底船出海'},
+      {e:'🛵',t:'骑摩托环岛'},{e:'🌿',t:'Tree Bridge 丛林飞索'},
+      {e:'💅',t:'泰式 SPA 下午'},{e:'🔥',t:'Ark Bar 火焰表演+派对'},
+      {e:'🌙',t:'Lamai 夜市烧烤扫货'},{e:'🐘',t:'大象营互动体验'},
+      {e:'🚣',t:'独木舟/皮划艇'},{e:'🌅',t:'塔玛林海滩日落'},
+      {e:'🍺',t:'Chaweng 海边酒吧'},{e:'🏄',t:'冲浪体验课'},
+      {e:'📸',t:'网红海滩拍照'},{e:'🧖',t:'泥浆浴体验'},
     ]
   },
   {
-    id:'d4', cls:'d4', emoji:'🥥',
-    date:'5月3日（周六）', title:'苏梅岛 · 慢慢自由日',
-    route:['苏梅岛'],
-    ftags:null,
+    id:'d4',cls:'d4',emoji:'🥥',
+    date:'5月3日（周六）',title:'苏梅岛 · 慢慢自由日',
+    route:['苏梅岛'],ftags:null,
     spots:[
-      {
-        name:'Coco Tam\'s',
-        type:'海滩酒吧 · 渔人码头',rating:'★★★★ 4.4',
-        emoji:'🥥',
-        img:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80',
-        url:'https://www.facebook.com/CoCoTams/'
-      },
-      {
-        name:'Phensiri',
-        type:'米其林推荐 · 查汶海滩',rating:'★★★★ 4.6',
-        emoji:'🍽️',
-        img:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&q=80',
-        url:'https://www.phensiri.com/'
-      },
-      {
-        name:'Ong Siripan',
-        type:'手工娃娃 · 精品手信店',rating:'★★★★ 4.0',
-        emoji:'🎁',
-        img:'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&q=80',
-        url:'https://www.instagram.com/ong_siripan/'
-      },
+      {name:"Coco Tam's",type:'海滩酒吧 · 渔人码头',rating:'★★★★ 4.4',emoji:'🥥',img:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80',url:'https://www.facebook.com/CoCoTams/'},
+      {name:'Phensiri',type:'米其林推荐 · 查汶海滩',rating:'★★★★ 4.6',emoji:'🍽️',img:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&q=80',url:'https://www.phensiri.com/'},
+      {name:'Ong Siripan',type:'手工娃娃 · 精品手信店',rating:'★★★★ 4.0',emoji:'🎁',img:'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&q=80',url:'https://www.instagram.com/ong_siripan/'},
     ],
     acts:[
-      {e:'🌅',t:'悦榕庄看清晨日出'},
-      {e:'🏄',t:'清晨冲浪'},
-      {e:'🥥',t:'Coco Tam\'s 海滩午餐'},
-      {e:'🍽️',t:'Phensiri 米其林晚餐'},
-      {e:'🎁',t:'Ong Siripan 买手信'},
-      {e:'😴',t:'沙滩躺平发呆'},
-      {e:'🍹',t:'悬崖边日落鸡尾酒'},
-      {e:'💆',t:'悦榕庄 Spa 全套'},
-      {e:'🚤',t:'租船出海私游'},
-      {e:'📸',t:'渔人村散步拍照'},
-      {e:'🛍️',t:'Big C 超市扫泰国零食'},
-      {e:'🐚',t:'Fisherman Village 夜市'},
-      {e:'🏊',t:'悦榕庄无边际泳池'},
-      {e:'🌊',t:'波普海滩闲逛'},
+      {e:'🌅',t:'悦榕庄看清晨日出'},{e:'🏄',t:'清晨冲浪'},
+      {e:'🥥',t:"Coco Tam's 海滩午餐"},{e:'🍽️',t:'Phensiri 米其林晚餐'},
+      {e:'🎁',t:'Ong Siripan 买手信'},{e:'😴',t:'沙滩躺平发呆'},
+      {e:'🍹',t:'悬崖边日落鸡尾酒'},{e:'💆',t:'悦榕庄 Spa 全套'},
+      {e:'🚤',t:'租船出海私游'},{e:'📸',t:'渔人村散步拍照'},
+      {e:'🛍️',t:'Big C 超市扫泰国零食'},{e:'🐚',t:'Fisherman Village 夜市'},
+      {e:'🏊',t:'悦榕庄无边际泳池'},{e:'🌊',t:'波普海滩闲逛'},
     ]
   },
   {
-    id:'d5', cls:'d5', emoji:'🌺',
-    date:'5月4日（周日）', title:'挥别苏梅 · 飞返上海',
+    id:'d5',cls:'d5',emoji:'🌺',
+    date:'5月4日（周日）',title:'挥别苏梅 · 飞返上海',
     route:['苏梅 19:10','曼谷 20:25','上海 05:45↑'],
     ftags:['PG180 + TG662','经停曼谷候机'],
     spots:[],
     acts:[
-      {e:'🏃',t:'海边晨跑送别'},
-      {e:'🌅',t:'最后一次日出'},
-      {e:'🦞',t:'最后一顿海鲜大餐'},
-      {e:'🛍️',t:'超市手信最后补货'},
-      {e:'📸',t:'悦榕庄大合照留念'},
-      {e:'💆',t:'机场前悠闲按摩'},
-      {e:'✈️',t:'苏梅→曼谷→上海'},
-      {e:'🌙',t:'曼谷机场候机（凌晨起飞）'},
+      {e:'🏃',t:'海边晨跑送别'},{e:'🌅',t:'最后一次日出'},
+      {e:'🦞',t:'最后一顿海鲜大餐'},{e:'🛍️',t:'超市手信最后补货'},
+      {e:'📸',t:'悦榕庄大合照留念'},{e:'💆',t:'机场前悠闲按摩'},
+      {e:'✈️',t:'苏梅→曼谷→上海'},{e:'🌙',t:'曼谷机场候机（凌晨起飞）'},
     ]
   },
 ];
 
-// ===== 渲染 =====
+// ══════════════ RENDER ══════════════
 const wrap = document.getElementById('days-wrap');
-days.forEach(day => {
+days.forEach(day=>{
   const el = document.createElement('article');
-  el.className = `day-card ${day.cls}`;
-  el.id = `card-${day.id}`;
+  el.className=`day-card ${day.cls}`;
+  el.id=`card-${day.id}`;
 
-  const routeHtml = day.route.length === 1
+  const routeHtml = day.route.length===1
     ? `<span>${day.route[0]}</span>`
-    : day.route.map((r,i)=> i===0
-        ? `<span>${r}</span>`
-        : `<span class="r-arrow">→</span><span>${r}</span>`
-      ).join('');
+    : day.route.map((r,i)=> i===0?`<span>${r}</span>`:`<span class="r-arrow">→</span><span>${r}</span>`).join('');
 
-  const ftagHtml = day.ftags
-    ? day.ftags.map(t=>`<span class="ftag">${t}</span>`).join('')
-    : '';
+  const ftagHtml = day.ftags ? day.ftags.map(t=>`<span class="ftag">${t}</span>`).join('') : '';
 
-  const spotsHtml = day.spots.length > 0
-    ? `<div class="subsect-title">📍 精选地点</div>
-       <div class="spots-grid">
-         ${day.spots.map(s=>`
-           <div class="spot-card">
-             ${s.img
-               ? `<img class="spot-img" src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=spot-img-placeholder>${s.emoji}</div>'">`
-               : `<div class="spot-img-placeholder">${s.emoji}</div>`}
-             <div class="spot-info">
-               <div class="spot-name">${s.name}</div>
-               <div class="spot-meta">
-                 <span class="spot-rating">${s.rating}</span>
-                 <span class="spot-type">${s.type}</span>
+  const spotsHtml = day.spots.length>0
+    ? `<div class="subsect-title">📍 精选地点 <span style="font-size:.6rem;color:#b0c4cc;font-weight:400;text-transform:none;letter-spacing:0">← 左右滑动</span></div>
+       <div class="spots-scroll-wrap">
+         <div class="spots-scroll" data-scroll="${day.id}">
+           ${day.spots.map(s=>`
+             <div class="spot-card">
+               ${s.img
+                 ? `<img class="spot-img" src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=spot-img-placeholder>${s.emoji}</div>'">`
+                 : `<div class="spot-img-placeholder">${s.emoji}</div>`}
+               <div class="spot-info">
+                 <div class="spot-name">${s.name}</div>
+                 <div class="spot-meta">
+                   <span class="spot-rating">${s.rating}</span>
+                   <span class="spot-type">${s.type}</span>
+                 </div>
+                 ${s.url?`<a class="spot-link" href="${s.url}" target="_blank">官网 →</a>`:''}
                </div>
-               ${s.url ? `<a class="spot-link" href="${s.url}" target="_blank">官网 →</a>` : ''}
-             </div>
-           </div>`).join('')}
+             </div>`).join('')}
+         </div>
        </div>`
     : '';
 
   const actsHtml = day.acts.map((a,i)=>{
-    const key = skey(day.id, i);
-    const chk = isChk(key);
+    const key=skey(day.id,i), chk=isChk(key);
     return `<label class="act-item${chk?' checked':''}" data-did="${day.id}" data-idx="${i}">
       <input type="checkbox" ${chk?'checked':''}/>
       <span class="cb-box"><span class="cb-tick">✓</span></span>
@@ -832,7 +563,7 @@ days.forEach(day => {
     </label>`;
   }).join('');
 
-  el.innerHTML = `
+  el.innerHTML=`
     <div class="card-stripe"></div>
     <div class="card-head">
       <div class="card-emoji">${day.emoji}</div>
@@ -840,7 +571,7 @@ days.forEach(day => {
         <div class="card-date">${day.date}</div>
         <div class="card-title">${day.title}</div>
         <div class="card-route">${routeHtml}</div>
-        ${ftagHtml ? `<div class="card-ftags">${ftagHtml}</div>` : ''}
+        ${ftagHtml?`<div class="card-ftags">${ftagHtml}</div>`:''}
       </div>
       <div class="card-counter">
         <div class="c-num" id="cnt-${day.id}">${cntChk(day)}</div>
@@ -852,68 +583,150 @@ days.forEach(day => {
       <div class="subsect-title">✅ 活动清单</div>
       <div class="acts-grid">${actsHtml}</div>
     </div>`;
-
   wrap.appendChild(el);
 });
 
-// ===== Storage helpers =====
-function skey(dayId, idx){ return `trip26_${cur}_${dayId}_${idx}`; }
-function isChk(key){ return localStorage.getItem(key)==='1'; }
-function cntChk(day){ return day.acts.reduce((n,_,i)=> n+(isChk(skey(day.id,i))?1:0), 0); }
+// ══════════════ DRAG-TO-SCROLL ══════════════
+document.querySelectorAll('.spots-scroll').forEach(el=>{
+  let isDown=false, startX, scrollLeft;
+  el.addEventListener('mousedown',e=>{
+    isDown=true; el.classList.add('grabbing');
+    startX=e.pageX-el.offsetLeft; scrollLeft=el.scrollLeft;
+  });
+  el.addEventListener('mouseleave',()=>{ isDown=false; el.classList.remove('grabbing'); });
+  el.addEventListener('mouseup',()=>{ isDown=false; el.classList.remove('grabbing'); });
+  el.addEventListener('mousemove',e=>{
+    if(!isDown) return; e.preventDefault();
+    const x=e.pageX-el.offsetLeft;
+    el.scrollLeft=scrollLeft-(x-startX)*1.2;
+  });
+  // touch passthrough is native, no extra needed
+});
 
-// ===== Checkbox =====
-document.addEventListener('click', e=>{
-  const lbl = e.target.closest('.act-item');
-  if (!lbl) return;
+// ══════════════ STORAGE ══════════════
+function skey(dayId,idx){ return `trip26_${cur}_${dayId}_${idx}`; }
+function isChk(key){ return localStorage.getItem(key)==='1'; }
+function cntChk(day){ return day.acts.reduce((n,_,i)=>n+(isChk(skey(day.id,i))?1:0),0); }
+
+// ══════════════ CHECKBOX ══════════════
+document.addEventListener('click',e=>{
+  const lbl=e.target.closest('.act-item');
+  if(!lbl) return;
   e.preventDefault();
-  const dayId = lbl.dataset.did, idx=+lbl.dataset.idx;
-  const cb = lbl.querySelector('input');
-  cb.checked = !cb.checked;
-  lbl.classList.toggle('checked', cb.checked);
-  localStorage.setItem(skey(dayId,idx), cb.checked?'1':'0');
+  const dayId=lbl.dataset.did, idx=+lbl.dataset.idx;
+  const cb=lbl.querySelector('input');
+  cb.checked=!cb.checked;
+  lbl.classList.toggle('checked',cb.checked);
+  localStorage.setItem(skey(dayId,idx),cb.checked?'1':'0');
   updCnt(dayId); updProgress();
 });
 
 function updCnt(dayId){
-  const day = days.find(d=>d.id===dayId);
-  const el = document.getElementById(`cnt-${dayId}`);
-  if(el && day) el.textContent = cntChk(day);
+  const day=days.find(d=>d.id===dayId);
+  const el=document.getElementById(`cnt-${dayId}`);
+  if(el&&day) el.textContent=cntChk(day);
 }
 
 function updProgress(){
-  let tot=0, chk=0;
-  days.forEach(d=> d.acts.forEach((_,i)=>{ tot++; if(isChk(skey(d.id,i))) chk++; }));
-  const pct = tot ? Math.round(chk/tot*100) : 0;
-  document.getElementById('prog-text').textContent = `已规划 ${chk} / ${tot} 项`;
-  document.getElementById('prog-pct').textContent = pct+'%';
-  document.getElementById('prog-fill').style.width = pct+'%';
+  let tot=0,chk=0;
+  days.forEach(d=>d.acts.forEach((_,i)=>{ tot++; if(isChk(skey(d.id,i))) chk++; }));
+  const pct=tot?Math.round(chk/tot*100):0;
+  document.getElementById('prog-text').textContent=`已规划 ${chk} / ${tot} 项`;
+  document.getElementById('prog-pct').textContent=pct+'%';
+  document.getElementById('prog-fill').style.width=pct+'%';
 }
 
 function refreshAll(){
   document.querySelectorAll('.act-item').forEach(lbl=>{
-    const key = skey(lbl.dataset.did, +lbl.dataset.idx);
-    const chk = isChk(key);
-    lbl.querySelector('input').checked = chk;
-    lbl.classList.toggle('checked', chk);
+    const key=skey(lbl.dataset.did,+lbl.dataset.idx), chk=isChk(key);
+    lbl.querySelector('input').checked=chk;
+    lbl.classList.toggle('checked',chk);
   });
-  days.forEach(d=> updCnt(d.id));
+  days.forEach(d=>updCnt(d.id));
   updProgress();
 }
 
-// ===== Person switch =====
 function switchPerson(p){
   cur=p;
-  document.querySelectorAll('.person-tab').forEach(b=> b.classList.toggle('active', b.dataset.p===p));
+  document.querySelectorAll('.person-tab').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
   refreshAll();
 }
 
-// ===== Reset =====
 function resetAll(){
-  const nm = {damen:'大门',huoshan:'火山',panpan:'攀攀'};
-  if(!confirm(`确定清空 ${nm[cur]} 的所有勾选吗？`)) return;
-  days.forEach(d=> d.acts.forEach((_,i)=> localStorage.removeItem(skey(d.id,i))));
+  if(!confirm(`确定清空 ${personName[cur]} 的所有勾选吗？`)) return;
+  days.forEach(d=>d.acts.forEach((_,i)=>localStorage.removeItem(skey(d.id,i))));
   refreshAll();
 }
+
+// ══════════════ TIMELINE MODAL ══════════════
+function openTimeline(){
+  const name=personName[cur];
+  let totalChk=0;
+  days.forEach(d=>d.acts.forEach((_,i)=>{ if(isChk(skey(d.id,i))) totalChk++; }));
+
+  document.getElementById('modal-title').textContent=`🗺️ ${name} 的行程时间轴`;
+  document.getElementById('modal-subtitle').textContent=
+    totalChk>0 ? `共选定 ${totalChk} 项活动，准备出发！` : '还没有选择任何活动，快去勾选吧～';
+
+  const body=document.getElementById('modal-body');
+
+  if(totalChk===0){
+    body.innerHTML=`<div class="tl-empty"><div class="tl-empty-icon">🏝️</div><div class="tl-empty-text">还没有选择任何活动<br>回去勾选你想去的地方吧～</div></div>`;
+  } else {
+    body.innerHTML = days.map(day=>{
+      const selActs=day.acts.filter((_,i)=>isChk(skey(day.id,i)));
+      const selSpotsHtml = day.spots.length>0
+        ? `<div class="tl-spots">${day.spots.map(s=>
+            `<span class="tl-spot-chip">${s.emoji} ${s.url?`<a href="${s.url}" target="_blank">${s.name}</a>`:s.name}</span>`
+          ).join('')}</div>`
+        : '';
+
+      const itemsHtml = selActs.length>0
+        ? selActs.map(a=>`
+          <div class="tl-item">
+            <span class="tl-item-emoji">${a.e}</span>
+            <span class="tl-item-text">${a.t}</span>
+          </div>`).join('')
+        : `<div class="tl-item" style="opacity:.45;font-size:.82rem;color:var(--light)">
+            <span class="tl-item-emoji">💤</span>
+            <span class="tl-item-text">这天还没选活动</span>
+          </div>`;
+
+      return `
+        <div class="tl-day tl-${day.cls}">
+          <div class="tl-day-head">
+            <div class="tl-day-dot">${day.emoji}</div>
+            <div class="tl-day-info">
+              <div class="tl-day-date">${day.date}</div>
+              <div class="tl-day-title">${day.title}</div>
+            </div>
+          </div>
+          ${selSpotsHtml}
+          <div class="tl-items">${itemsHtml}</div>
+        </div>`;
+    }).join('');
+  }
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeTimeline(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function onOverlayClick(e){
+  if(e.target===document.getElementById('modal')) closeTimeline();
+}
+
+// swipe down to close
+let touchStartY=0;
+document.getElementById('modal-sheet').addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY},{passive:true});
+document.getElementById('modal-sheet').addEventListener('touchend',e=>{
+  const dy=e.changedTouches[0].clientY-touchStartY;
+  if(dy>80) closeTimeline();
+},{passive:true});
 
 // init
 refreshAll();
