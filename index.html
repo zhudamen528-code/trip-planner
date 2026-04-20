@@ -1,891 +1,867 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>曼谷 & 苏梅岛之旅 · 五一 2026</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ocean-blue:   #2A9D8F;
-      --deep-blue:    #264653;
-      --coral:        #E76F51;
-      --sandy:        #F4E4C1;
-      --sandy-light:  #FDF8F0;
-      --sky-blue:     #A8DADC;
-      --white:        #FFFFFF;
-      --text-dark:    #2C3E50;
-      --text-mid:     #5A6E79;
-      --text-light:   #8FA5AF;
-      --shadow:       rgba(38,70,83,0.12);
-      --shadow-hover: rgba(38,70,83,0.22);
-      --radius:       18px;
-      --radius-sm:    10px;
-      --tr:           0.25s ease;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blue:#1a6b8a;
+      --teal:#2a9d8f;
+      --coral:#e76f51;
+      --sand:#f9f3e8;
+      --white:#fff;
+      --text:#2c3e50;
+      --mid:#5a6e79;
+      --light:#8fa5af;
+      --shadow:rgba(30,60,70,.13);
+      --r:16px;
+      --rs:10px;
+      --t:.22s ease;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+      background:#f0f8ff;
+      min-height:100vh;
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-      background: linear-gradient(160deg,#e0f4f1 0%,#f4e4c1 50%,#fde8d8 100%);
-      min-height: 100vh;
-      color: var(--text-dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content:'';
-      position:fixed;
-      top:0; left:0; right:0;
-      height:340px;
-      background: linear-gradient(135deg,var(--deep-blue) 0%,var(--ocean-blue) 60%,var(--sky-blue) 100%);
-      clip-path: ellipse(120% 100% at 50% 0%);
-      z-index:0;
-      pointer-events:none;
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      position:relative; z-index:1;
+    /* ===== HERO ===== */
+    .hero{
+      background:linear-gradient(160deg,#0d3b5e 0%,#1a6b8a 45%,#2a9d8f 100%);
+      padding:48px 24px 120px;
       text-align:center;
-      padding:52px 24px 20px;
-      color:var(--white);
+      position:relative;
+      overflow:hidden;
     }
-    .header-badge {
+    .hero::after{
+      content:'';
+      position:absolute;
+      bottom:-1px;left:0;right:0;
+      height:80px;
+      background:#f0f8ff;
+      clip-path:ellipse(55% 100% at 50% 100%);
+    }
+    .hero-badge{
       display:inline-block;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.35);
-      border-radius:50px;
-      padding:5px 18px;
-      font-size:.78rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      margin-bottom:12px;
-      backdrop-filter:blur(4px);
-    }
-    header h1 {
-      font-size:clamp(1.9rem,5vw,3rem);
-      font-weight:700;
-      letter-spacing:-.02em;
-      line-height:1.2;
-      margin-bottom:8px;
-      text-shadow:0 2px 12px rgba(0,0,0,.18);
-    }
-    header .subtitle { font-size:1rem; opacity:.85; margin-bottom:20px; }
-    .header-meta { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
-    .meta-chip {
       background:rgba(255,255,255,.15);
       border:1px solid rgba(255,255,255,.3);
       border-radius:50px;
+      padding:5px 18px;
+      font-size:.75rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.9);
+      margin-bottom:14px;
+    }
+    .hero h1{
+      font-size:clamp(2rem,5vw,3.2rem);
+      font-weight:800;
+      color:#fff;
+      letter-spacing:-.02em;
+      line-height:1.15;
+      margin-bottom:8px;
+      text-shadow:0 2px 16px rgba(0,0,0,.2);
+    }
+    .hero-sub{font-size:1rem;color:rgba(255,255,255,.82);margin-bottom:22px}
+    .hero-chips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .hero-chip{
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:50px;
       padding:5px 14px;
       font-size:.82rem;
-      backdrop-filter:blur(6px);
+      color:rgba(255,255,255,.9);
     }
 
-    /* ===== PERSON SELECTOR ===== */
-    .person-selector-wrap {
-      position:relative; z-index:1;
-      max-width:720px;
-      margin:0 auto 8px;
-      padding:0 24px;
+    /* ===== PERSON TABS ===== */
+    .person-wrap{
+      max-width:760px;
+      margin:-30px auto 0;
+      padding:0 20px;
+      position:relative;
+      z-index:10;
     }
-    .person-selector-label {
+    .person-label{
       text-align:center;
-      font-size:.78rem;
-      color:rgba(255,255,255,.75);
-      letter-spacing:.1em;
+      font-size:.72rem;
+      font-weight:600;
+      letter-spacing:.12em;
       text-transform:uppercase;
+      color:var(--mid);
       margin-bottom:10px;
     }
-    .person-tabs {
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .person-tab {
-      display:flex; align-items:center; gap:8px;
-      padding:10px 22px;
-      background:rgba(255,255,255,.15);
-      border:2px solid rgba(255,255,255,.3);
+    .person-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .person-tab{
+      display:flex;align-items:center;gap:9px;
+      padding:11px 26px;
+      background:#fff;
+      border:2px solid #d8e8ef;
       border-radius:50px;
-      color:rgba(255,255,255,.8);
-      font-size:.92rem;
+      color:var(--mid);
+      font-size:.95rem;
       font-weight:600;
       cursor:pointer;
-      transition:all .2s ease;
-      backdrop-filter:blur(6px);
+      transition:all .2s;
+      box-shadow:0 2px 12px var(--shadow);
     }
-    .person-tab:hover { background:rgba(255,255,255,.25); border-color:rgba(255,255,255,.5); }
-    .person-tab.active {
-      background:var(--white);
-      border-color:var(--white);
-      color:var(--deep-blue);
-      box-shadow:0 4px 20px rgba(0,0,0,.15);
+    .person-tab:hover{border-color:var(--teal);color:var(--teal)}
+    .person-tab.active{
+      background:linear-gradient(135deg,#0d3b5e,#2a9d8f);
+      border-color:transparent;
+      color:#fff;
+      box-shadow:0 4px 20px rgba(26,107,138,.35);
     }
-    .person-avatar {
-      width:28px; height:28px;
-      border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1rem; font-weight:700;
-      flex-shrink:0;
+    .p-avatar{
+      width:28px;height:28px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:.9rem;font-weight:700;flex-shrink:0;
     }
-    .avatar-damen  { background:linear-gradient(135deg,#2a9d8f,#264653); color:white; }
-    .avatar-huoshan { background:linear-gradient(135deg,#e76f51,#f4a261); color:white; }
-    .avatar-panpan { background:linear-gradient(135deg,#e9c46a,#f4a261); color:white; }
+    .av-d{background:#fff;color:#1a6b8a}
+    .av-h{background:rgba(255,255,255,.25);color:#fff}
+    .av-p{background:rgba(255,255,255,.25);color:#fff}
+    .person-tab:not(.active) .av-d{background:#dff0f5;color:#1a6b8a}
+    .person-tab:not(.active) .av-h{background:#fde8e0;color:#e76f51}
+    .person-tab:not(.active) .av-p{background:#fef3d8;color:#d4a017}
 
     /* ===== PROGRESS ===== */
-    .progress-bar-wrap {
-      position:relative; z-index:1;
-      max-width:720px;
-      margin:14px auto 28px;
-      padding:0 24px;
+    .progress-wrap{
+      max-width:760px;
+      margin:18px auto 0;
+      padding:0 20px;
     }
-    .progress-label {
-      text-align:right;
-      font-size:.8rem;
-      color:rgba(255,255,255,.8);
-      margin-bottom:6px;
-    }
-    .progress-bar-bg {
-      background:rgba(255,255,255,.2);
-      border-radius:50px;
-      height:8px;
-      overflow:hidden;
-    }
-    .progress-bar-fill {
+    .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+    .progress-text{font-size:.82rem;color:var(--mid);font-weight:500}
+    .progress-pct{font-size:.82rem;color:var(--teal);font-weight:700}
+    .progress-bg{background:#dceef5;border-radius:50px;height:8px;overflow:hidden}
+    .progress-fill{
       height:100%;
-      background:linear-gradient(90deg,#f4d35e,#ee964b);
+      background:linear-gradient(90deg,var(--teal),#48cae4);
       border-radius:50px;
-      transition:width .5s cubic-bezier(.4,0,.2,1);
       width:0%;
+      transition:width .5s cubic-bezier(.4,0,.2,1);
     }
 
-    /* ===== FLIGHT BANNER ===== */
-    .flight-section {
-      position:relative; z-index:1;
-      max-width:800px;
-      margin:0 auto 20px;
-      padding:0 16px;
+    /* ===== INFO SECTION (flights + hotels) ===== */
+    .info-section{
+      max-width:760px;
+      margin:32px auto 0;
+      padding:0 20px;
     }
-    .flight-section-title {
+    .section-title{
       font-size:.72rem;
-      font-weight:600;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.7);
-      margin-bottom:10px;
-      padding-left:4px;
-    }
-    .flight-cards {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-      gap:10px;
-    }
-    .flight-card {
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:14px;
-      padding:14px 18px;
-      backdrop-filter:blur(8px);
-      color:var(--white);
-    }
-    .flight-row {
-      display:flex; align-items:center; gap:10px;
-    }
-    .flight-time {
-      font-size:1.2rem;
       font-weight:700;
-      min-width:52px;
-    }
-    .flight-arrow {
-      flex:1;
-      display:flex;
-      align-items:center;
-      gap:6px;
-      color:rgba(255,255,255,.6);
-      font-size:.78rem;
-    }
-    .flight-arrow-line {
-      flex:1;
-      height:1px;
-      background:rgba(255,255,255,.3);
-    }
-    .flight-arrow-icon { color:var(--sandy); font-size:1rem; }
-    .flight-num {
-      font-size:.78rem;
-      opacity:.7;
-      margin-top:4px;
-    }
-    .flight-date-badge {
-      display:inline-block;
-      background:rgba(255,255,255,.15);
-      border-radius:4px;
-      padding:1px 7px;
-      font-size:.7rem;
-      margin-right:6px;
-      opacity:.85;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--mid);
+      margin-bottom:12px;
+      padding-left:2px;
     }
 
-    /* ===== HOTEL STRIP ===== */
-    .hotel-section {
-      position:relative; z-index:1;
-      max-width:800px;
-      margin:0 auto 32px;
-      padding:0 16px;
-    }
-    .hotel-section-title {
-      font-size:.72rem;
-      font-weight:600;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.7);
-      margin-bottom:10px;
-      padding-left:4px;
-    }
-    .hotel-cards {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-      gap:10px;
-    }
-    .hotel-card {
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:14px;
+    /* flights */
+    .flight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:28px}
+    .flight-card{
+      background:#fff;
+      border-radius:var(--rs);
       padding:14px 18px;
-      backdrop-filter:blur(8px);
-      color:var(--white);
-      display:flex; align-items:center; gap:14px;
+      box-shadow:0 2px 14px var(--shadow);
+      display:flex;flex-direction:column;gap:8px;
     }
-    .hotel-icon { font-size:1.8rem; flex-shrink:0; }
-    .hotel-name { font-size:.95rem; font-weight:700; margin-bottom:3px; }
-    .hotel-detail { font-size:.78rem; opacity:.7; line-height:1.5; }
-
-    /* ===== MAIN / DAY CARDS ===== */
-    main {
-      position:relative; z-index:1;
-      max-width:800px;
-      margin:0 auto;
-      padding:0 16px 60px;
-      display:flex; flex-direction:column; gap:24px;
-    }
-
-    .day-card {
-      background:var(--white);
-      border-radius:var(--radius);
-      box-shadow:0 4px 24px var(--shadow);
-      overflow:hidden;
-      transition:box-shadow var(--tr), transform var(--tr);
-      animation:fadeUp .5s ease both;
-    }
-    .day-card:hover { box-shadow:0 8px 40px var(--shadow-hover); transform:translateY(-2px); }
-    .day-card:nth-child(1) { animation-delay:.05s; }
-    .day-card:nth-child(2) { animation-delay:.12s; }
-    .day-card:nth-child(3) { animation-delay:.19s; }
-    .day-card:nth-child(4) { animation-delay:.26s; }
-    .day-card:nth-child(5) { animation-delay:.33s; }
-
-    .card-header {
-      padding:20px 26px 16px;
-      display:flex; align-items:flex-start; gap:14px;
-      border-bottom:1px solid rgba(0,0,0,.06);
-      position:relative;
-    }
-    .card-header::before {
-      content:'';
+    .fc-top{display:flex;align-items:center;gap:8px}
+    .fc-time{font-size:1.3rem;font-weight:700;color:var(--text);min-width:52px}
+    .fc-line{flex:1;height:1px;background:#d0e4ec;position:relative}
+    .fc-line::after{
+      content:'✈';
       position:absolute;
-      top:0; left:0; right:0;
-      height:4px;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      background:#fff;
+      padding:0 4px;
+      color:var(--teal);
+      font-size:.85rem;
     }
-    .day-1 .card-header::before { background:linear-gradient(90deg,#264653,#2a9d8f); }
-    .day-2 .card-header::before { background:linear-gradient(90deg,#e9c46a,#f4a261); }
-    .day-3 .card-header::before { background:linear-gradient(90deg,#48cae4,#0096c7); }
-    .day-4 .card-header::before { background:linear-gradient(90deg,#06d6a0,#1b9aaa); }
-    .day-5 .card-header::before { background:linear-gradient(90deg,#f4d35e,#ee964b); }
-
-    .card-emoji { font-size:2.2rem; line-height:1; flex-shrink:0; filter:drop-shadow(0 2px 4px rgba(0,0,0,.1)); }
-    .card-header-text { flex:1; }
-    .card-date { font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--text-light); margin-bottom:3px; }
-    .card-title { font-size:1.15rem; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
-    .card-route { font-size:.83rem; color:var(--text-mid); display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    .route-arrow { color:var(--coral); font-weight:700; }
-    .card-flight-info {
-      font-size:.76rem;
-      color:var(--ocean-blue);
-      margin-top:5px;
-      display:flex; gap:8px; flex-wrap:wrap;
-    }
-    .flight-tag {
-      background:#e8f7f5;
-      border:1px solid #b2e0da;
-      border-radius:6px;
-      padding:2px 8px;
-      font-weight:600;
-    }
-
-    .card-progress { flex-shrink:0; text-align:center; align-self:center; }
-    .card-count { font-size:1.4rem; font-weight:700; color:var(--ocean-blue); line-height:1; }
-    .card-count-label { font-size:.65rem; color:var(--text-light); letter-spacing:.05em; }
-
-    .card-body { padding:18px 26px 22px; }
-
-    /* Section inside card */
-    .card-section-title {
+    .fc-badge{
+      background:#e8f6f4;
+      border:1px solid #b2dcd8;
+      border-radius:4px;
+      padding:1px 6px;
       font-size:.68rem;
+      color:var(--teal);
       font-weight:600;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      color:var(--text-light);
-      margin-bottom:10px;
-      margin-top:16px;
+      margin-right:4px;
     }
-    .card-section-title:first-child { margin-top:0; }
+    .fc-port{font-size:.78rem;color:var(--mid)}
+    .fc-num{font-size:.73rem;color:var(--light);margin-top:2px}
 
-    /* Map spots */
-    .map-spots {
-      display:flex; gap:8px; flex-wrap:wrap;
+    /* hotels */
+    .hotel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:32px}
+    .hotel-card{
+      background:#fff;
+      border-radius:var(--rs);
+      padding:16px 18px;
+      box-shadow:0 2px 14px var(--shadow);
+      display:flex;gap:14px;align-items:center;
+    }
+    .hotel-img{
+      width:72px;height:72px;border-radius:10px;
+      object-fit:cover;flex-shrink:0;
+      background:#e8f0f5;
+    }
+    .hotel-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
+    .hotel-detail{font-size:.76rem;color:var(--mid);line-height:1.6}
+    .hotel-link{
+      display:inline-block;margin-top:6px;
+      font-size:.73rem;font-weight:600;
+      color:var(--teal);text-decoration:none;
+      background:#e8f6f4;border-radius:4px;
+      padding:2px 8px;transition:background .2s;
+    }
+    .hotel-link:hover{background:#c0ebe6}
+
+    /* ===== DAY CARDS ===== */
+    .days-wrap{
+      max-width:760px;
+      margin:0 auto 48px;
+      padding:0 20px;
+      display:flex;flex-direction:column;gap:22px;
+    }
+    .day-card{
+      background:#fff;
+      border-radius:var(--r);
+      box-shadow:0 3px 20px var(--shadow);
+      overflow:hidden;
+      transition:box-shadow var(--t),transform var(--t);
+      animation:fadeUp .45s ease both;
+    }
+    .day-card:hover{box-shadow:0 8px 36px rgba(30,60,70,.18);transform:translateY(-2px)}
+    .day-card:nth-child(1){animation-delay:.05s}
+    .day-card:nth-child(2){animation-delay:.11s}
+    .day-card:nth-child(3){animation-delay:.17s}
+    .day-card:nth-child(4){animation-delay:.23s}
+    .day-card:nth-child(5){animation-delay:.29s}
+
+    .card-stripe{height:4px}
+    .d1 .card-stripe{background:linear-gradient(90deg,#0d3b5e,#2a9d8f)}
+    .d2 .card-stripe{background:linear-gradient(90deg,#e9c46a,#f4a261)}
+    .d3 .card-stripe{background:linear-gradient(90deg,#48cae4,#0096c7)}
+    .d4 .card-stripe{background:linear-gradient(90deg,#06d6a0,#1b9aaa)}
+    .d5 .card-stripe{background:linear-gradient(90deg,#f4d35e,#ee964b)}
+
+    .card-head{
+      padding:18px 22px 14px;
+      display:flex;align-items:flex-start;gap:14px;
+      border-bottom:1px solid #edf2f5;
+    }
+    .card-emoji{font-size:2.2rem;flex-shrink:0;line-height:1;filter:drop-shadow(0 1px 3px rgba(0,0,0,.1))}
+    .card-htext{flex:1}
+    .card-date{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--light);margin-bottom:3px}
+    .card-title{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:4px}
+    .card-route{font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+    .r-arrow{color:var(--coral);font-weight:700}
+    .card-ftags{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+    .ftag{
+      background:#e8f6f4;border:1px solid #b2dcd8;
+      border-radius:5px;padding:1px 8px;
+      font-size:.72rem;color:var(--teal);font-weight:600;
+    }
+    .card-counter{flex-shrink:0;text-align:center;align-self:center}
+    .c-num{font-size:1.35rem;font-weight:700;color:var(--teal);line-height:1}
+    .c-label{font-size:.64rem;color:var(--light);letter-spacing:.04em}
+
+    /* card body */
+    .card-body{padding:16px 22px 20px}
+    .subsect-title{
+      font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--light);margin-bottom:10px;margin-top:14px;
+    }
+    .subsect-title:first-child{margin-top:0}
+
+    /* === SPOT CARDS (with image) === */
+    .spots-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+      gap:10px;
       margin-bottom:4px;
     }
-    .map-spot {
-      display:flex; align-items:center; gap:5px;
-      background:#fff5f0;
-      border:1.5px solid #f4c3b0;
-      border-radius:20px;
-      padding:5px 12px;
-      font-size:.8rem;
-      color:#c0503a;
-      font-weight:500;
+    .spot-card{
+      border-radius:12px;
+      overflow:hidden;
+      border:1.5px solid #e2eff5;
       transition:all .2s;
+      background:#fff;
+      cursor:default;
     }
-    .map-spot:hover { background:#fde8e0; }
-    .map-spot a { color:inherit; text-decoration:none; }
-    .spot-star { color:#f4a261; font-size:.7rem; }
+    .spot-card:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(42,157,143,.15);transform:translateY(-2px)}
+    .spot-img{
+      width:100%;height:120px;
+      object-fit:cover;
+      background:linear-gradient(135deg,#d0e8f0,#b8dce8);
+      display:block;
+    }
+    .spot-img-placeholder{
+      width:100%;height:120px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:2.4rem;
+      background:linear-gradient(135deg,#e0f4f1,#d0e8f0);
+    }
+    .spot-info{padding:10px 12px 10px}
+    .spot-name{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:3px}
+    .spot-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px}
+    .spot-rating{font-size:.75rem;color:#f4a261}
+    .spot-type{font-size:.7rem;color:var(--light)}
+    .spot-link{
+      display:inline-block;margin-top:6px;
+      font-size:.72rem;font-weight:600;
+      color:var(--white);background:var(--teal);
+      border-radius:5px;padding:3px 10px;
+      text-decoration:none;transition:background .2s;
+    }
+    .spot-link:hover{background:#1e7a70}
 
-    /* Activities grid */
-    .activities-grid {
+    /* === ACTIVITY ITEMS === */
+    .acts-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
-      gap:9px;
+      grid-template-columns:repeat(auto-fill,minmax(195px,1fr));
+      gap:8px;
     }
-
-    .activity-item {
-      display:flex; align-items:center; gap:9px;
+    .act-item{
+      display:flex;align-items:center;gap:9px;
       padding:9px 12px;
-      background:var(--sandy-light);
-      border-radius:var(--radius-sm);
+      background:#f5fbfa;
+      border-radius:var(--rs);
       border:1.5px solid transparent;
       cursor:pointer;
-      transition:background var(--tr), border-color var(--tr), transform var(--tr);
+      transition:background var(--t),border-color var(--t),transform var(--t);
       user-select:none;
     }
-    .activity-item:hover { background:#eef9f7; border-color:var(--sky-blue); transform:scale(1.01); }
-    .activity-item.checked { background:linear-gradient(135deg,#e6f7f5,#d0f0ec); border-color:var(--ocean-blue); }
-    .activity-item input[type="checkbox"] { display:none; }
-    .checkbox-box {
-      width:19px; height:19px;
-      border:2px solid #c8d8db;
+    .act-item:hover{background:#e8f7f5;border-color:#a8d8d3;transform:scale(1.01)}
+    .act-item.checked{background:linear-gradient(135deg,#e0f5f2,#c8ede8);border-color:var(--teal)}
+    .act-item input[type=checkbox]{display:none}
+    .cb-box{
+      width:19px;height:19px;
+      border:2px solid #c0d8e0;
       border-radius:5px;
-      display:flex; align-items:center; justify-content:center;
+      display:flex;align-items:center;justify-content:center;
       flex-shrink:0;
-      transition:background var(--tr), border-color var(--tr);
-      background:var(--white);
+      transition:all var(--t);
+      background:#fff;
     }
-    .activity-item.checked .checkbox-box { background:var(--ocean-blue); border-color:var(--ocean-blue); }
-    .checkbox-tick { display:none; color:white; font-size:11px; font-weight:700; line-height:1; }
-    .activity-item.checked .checkbox-tick { display:block; }
-    .activity-emoji { font-size:1.05rem; flex-shrink:0; }
-    .activity-text { font-size:.85rem; color:var(--text-dark); font-weight:500; line-height:1.3; }
-    .activity-item.checked .activity-text { color:var(--ocean-blue); }
-
-    /* ===== PERSON INDICATOR on card ===== */
-    .person-indicators {
-      display:flex; gap:6px; align-items:center;
-      margin-top:6px;
-    }
-    .person-dot {
-      width:8px; height:8px; border-radius:50%;
-      opacity:.25;
-      transition:opacity .2s;
-    }
-    .person-dot.active { opacity:1; }
-    .dot-damen  { background:#2a9d8f; }
-    .dot-huoshan { background:#e76f51; }
-    .dot-panpan { background:#e9c46a; }
+    .act-item.checked .cb-box{background:var(--teal);border-color:var(--teal)}
+    .cb-tick{display:none;color:#fff;font-size:11px;font-weight:700;line-height:1}
+    .act-item.checked .cb-tick{display:block}
+    .act-emoji{font-size:1rem;flex-shrink:0}
+    .act-text{font-size:.84rem;color:var(--text);font-weight:500;line-height:1.3}
+    .act-item.checked .act-text{color:var(--teal)}
 
     /* ===== FOOTER ===== */
-    footer {
-      position:relative; z-index:1;
-      text-align:center;
-      padding:0 24px 48px;
+    footer{
+      max-width:760px;margin:0 auto 56px;
+      padding:0 20px;
     }
-    .footer-inner {
-      background:var(--white);
-      border-radius:var(--radius);
-      padding:18px 24px;
-      box-shadow:0 2px 16px var(--shadow);
-      max-width:800px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+    .footer-inner{
+      background:#fff;border-radius:var(--r);
+      padding:16px 22px;
+      box-shadow:0 2px 14px var(--shadow);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;flex-wrap:wrap;
     }
-    .footer-tip { font-size:.82rem; color:var(--text-mid); }
-    .reset-btn {
-      background:none;
-      border:1.5px solid var(--coral);
-      color:var(--coral);
-      border-radius:50px;
-      padding:6px 18px;
-      font-size:.8rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:background var(--tr), color var(--tr);
+    .footer-tip{font-size:.82rem;color:var(--mid)}
+    .reset-btn{
+      background:none;border:1.5px solid var(--coral);
+      color:var(--coral);border-radius:50px;
+      padding:6px 18px;font-size:.8rem;font-weight:600;
+      cursor:pointer;transition:all .2s;
     }
-    .reset-btn:hover { background:var(--coral); color:white; }
+    .reset-btn:hover{background:var(--coral);color:#fff}
 
-    /* ===== SCROLLBAR ===== */
-    ::-webkit-scrollbar { width:6px; }
-    ::-webkit-scrollbar-track { background:transparent; }
-    ::-webkit-scrollbar-thumb { background:var(--sky-blue); border-radius:3px; }
+    /* scrollbar */
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
 
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:600px) {
-      header { padding:40px 16px 16px; }
-      .card-header { padding:16px 16px 12px; flex-wrap:wrap; }
-      .card-body { padding:14px 16px 18px; }
-      .activities-grid { grid-template-columns:1fr 1fr; }
-      .flight-cards, .hotel-cards { grid-template-columns:1fr; }
-      .footer-inner { flex-direction:column; text-align:center; }
+    /* responsive */
+    @media(max-width:600px){
+      .hero{padding:36px 16px 110px}
+      .card-head{padding:14px 16px 12px;flex-wrap:wrap}
+      .card-body{padding:12px 16px 16px}
+      .acts-grid{grid-template-columns:1fr 1fr}
+      .spots-grid{grid-template-columns:1fr 1fr}
+      .flight-grid,.hotel-grid{grid-template-columns:1fr}
+      .footer-inner{flex-direction:column;text-align:center}
     }
-    @media(max-width:380px) { .activities-grid { grid-template-columns:1fr; } }
-
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(20px); }
-      to   { opacity:1; transform:translateY(0); }
+    @media(max-width:400px){
+      .acts-grid{grid-template-columns:1fr}
+      .spots-grid{grid-template-columns:1fr}
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
     }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-  <div class="header-badge">五一出游 · 2026</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">五一出游 · 2026</div>
   <h1>曼谷 · 苏梅岛之旅</h1>
-  <p class="subtitle">4月30日 — 5月5日 · 大门 · 火山 · 攀攀</p>
-  <div class="header-meta">
-    <span class="meta-chip">✈️ 出发：上海浦东</span>
-    <span class="meta-chip">🏨 曼谷金普顿 + 苏梅悦榕庄</span>
-    <span class="meta-chip">🏝 苏梅岛3晚</span>
+  <p class="hero-sub">4月30日 — 5月5日 &nbsp;·&nbsp; 大门 · 火山 · 攀攀</p>
+  <div class="hero-chips">
+    <span class="hero-chip">✈️ 上海浦东出发</span>
+    <span class="hero-chip">🏨 Kimpton + Banyan Tree</span>
+    <span class="hero-chip">🏝 苏梅岛 3 晚</span>
   </div>
-</header>
+</div>
 
-<!-- ===== PERSON SELECTOR ===== -->
-<div class="person-selector-wrap">
-  <div class="person-selector-label">选择你的视角 · 勾选独立保存</div>
+<!-- PERSON TABS -->
+<div class="person-wrap">
+  <div class="person-label">选择你的视角 · 三人勾选独立保存</div>
   <div class="person-tabs">
-    <button class="person-tab active" data-person="damen" onclick="switchPerson('damen')">
-      <span class="person-avatar avatar-damen">大</span> 大门
+    <button class="person-tab active" data-p="damen" onclick="switchPerson('damen')">
+      <span class="p-avatar av-d">大</span>大门
     </button>
-    <button class="person-tab" data-person="huoshan" onclick="switchPerson('huoshan')">
-      <span class="person-avatar avatar-huoshan">火</span> 火山
+    <button class="person-tab" data-p="huoshan" onclick="switchPerson('huoshan')">
+      <span class="p-avatar av-h">火</span>火山
     </button>
-    <button class="person-tab" data-person="panpan" onclick="switchPerson('panpan')">
-      <span class="person-avatar avatar-panpan">攀</span> 攀攀
+    <button class="person-tab" data-p="panpan" onclick="switchPerson('panpan')">
+      <span class="p-avatar av-p">攀</span>攀攀
     </button>
   </div>
 </div>
 
-<!-- ===== PROGRESS ===== -->
-<div class="progress-bar-wrap">
-  <div class="progress-label" id="global-label">已规划 0 / 0 项活动</div>
-  <div class="progress-bar-bg">
-    <div class="progress-bar-fill" id="global-fill"></div>
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-row">
+    <span class="progress-text" id="prog-text">已规划 0 / 0 项</span>
+    <span class="progress-pct" id="prog-pct">0%</span>
   </div>
+  <div class="progress-bg"><div class="progress-fill" id="prog-fill"></div></div>
 </div>
 
-<!-- ===== FLIGHTS ===== -->
-<div class="flight-section">
-  <div class="flight-section-title">✈️ 航班信息</div>
-  <div class="flight-cards">
+<!-- FLIGHTS -->
+<div class="info-section">
+  <div class="section-title">✈️ 航班信息</div>
+  <div class="flight-grid">
     <div class="flight-card">
-      <div class="flight-row">
-        <div>
-          <div class="flight-time">07:30</div>
-          <div class="flight-num"><span class="flight-date-badge">4/30</span>上海浦东 T2</div>
-        </div>
-        <div class="flight-arrow">
-          <div class="flight-arrow-line"></div>
-          <div class="flight-arrow-icon">✈</div>
-          <div class="flight-arrow-line"></div>
-        </div>
-        <div style="text-align:right">
-          <div class="flight-time">11:05</div>
-          <div class="flight-num">曼谷素万那普</div>
-        </div>
+      <div class="fc-top">
+        <div class="fc-time">07:30</div>
+        <div class="fc-line"></div>
+        <div class="fc-time" style="text-align:right">11:05</div>
       </div>
-      <div class="flight-num" style="margin-top:6px;opacity:.6">TG663 · 泰国航空</div>
+      <div style="display:flex;justify-content:space-between">
+        <div><span class="fc-badge">4/30</span><span class="fc-port">上海浦东 T2</span></div>
+        <div class="fc-port">曼谷素万那普</div>
+      </div>
+      <div class="fc-num">TG663 · 泰国航空</div>
     </div>
     <div class="flight-card">
-      <div class="flight-row">
-        <div>
-          <div class="flight-time">11:40</div>
-          <div class="flight-num"><span class="flight-date-badge">5/1</span>曼谷素万那普</div>
-        </div>
-        <div class="flight-arrow">
-          <div class="flight-arrow-line"></div>
-          <div class="flight-arrow-icon">✈</div>
-          <div class="flight-arrow-line"></div>
-        </div>
-        <div style="text-align:right">
-          <div class="flight-time">12:45</div>
-          <div class="flight-num">苏梅国际 T1</div>
-        </div>
+      <div class="fc-top">
+        <div class="fc-time">11:40</div>
+        <div class="fc-line"></div>
+        <div class="fc-time" style="text-align:right">12:45</div>
       </div>
-      <div class="flight-num" style="margin-top:6px;opacity:.6">PG133 · 曼谷航空</div>
+      <div style="display:flex;justify-content:space-between">
+        <div><span class="fc-badge">5/1</span><span class="fc-port">曼谷素万那普</span></div>
+        <div class="fc-port">苏梅国际 T1</div>
+      </div>
+      <div class="fc-num">PG133 · 曼谷航空</div>
     </div>
     <div class="flight-card">
-      <div class="flight-row">
-        <div>
-          <div class="flight-time">19:10</div>
-          <div class="flight-num"><span class="flight-date-badge">5/4</span>苏梅国际 T1</div>
-        </div>
-        <div class="flight-arrow">
-          <div class="flight-arrow-line"></div>
-          <div class="flight-arrow-icon">✈</div>
-          <div class="flight-arrow-line"></div>
-        </div>
-        <div style="text-align:right">
-          <div class="flight-time">20:25</div>
-          <div class="flight-num">曼谷素万那普</div>
-        </div>
+      <div class="fc-top">
+        <div class="fc-time">19:10</div>
+        <div class="fc-line"></div>
+        <div class="fc-time" style="text-align:right">20:25</div>
       </div>
-      <div class="flight-num" style="margin-top:6px;opacity:.6">PG180 · 曼谷航空</div>
+      <div style="display:flex;justify-content:space-between">
+        <div><span class="fc-badge">5/4</span><span class="fc-port">苏梅国际 T1</span></div>
+        <div class="fc-port">曼谷素万那普</div>
+      </div>
+      <div class="fc-num">PG180 · 曼谷航空</div>
     </div>
     <div class="flight-card">
-      <div class="flight-row">
-        <div>
-          <div class="flight-time">00:30</div>
-          <div class="flight-num"><span class="flight-date-badge">5/5</span>曼谷素万那普</div>
-        </div>
-        <div class="flight-arrow">
-          <div class="flight-arrow-line"></div>
-          <div class="flight-arrow-icon">✈</div>
-          <div class="flight-arrow-line"></div>
-        </div>
-        <div style="text-align:right">
-          <div class="flight-time">05:45</div>
-          <div class="flight-num">上海浦东 T2</div>
-        </div>
+      <div class="fc-top">
+        <div class="fc-time">00:30</div>
+        <div class="fc-line"></div>
+        <div class="fc-time" style="text-align:right">05:45</div>
       </div>
-      <div class="flight-num" style="margin-top:6px;opacity:.6">TG662 · 泰国航空</div>
+      <div style="display:flex;justify-content:space-between">
+        <div><span class="fc-badge">5/5</span><span class="fc-port">曼谷素万那普</span></div>
+        <div class="fc-port">上海浦东 T2</div>
+      </div>
+      <div class="fc-num">TG662 · 泰国航空</div>
     </div>
   </div>
-</div>
 
-<!-- ===== HOTELS ===== -->
-<div class="hotel-section">
-  <div class="hotel-section-title">🏨 住宿安排</div>
-  <div class="hotel-cards">
+  <!-- HOTELS -->
+  <div class="section-title">🏨 住宿安排</div>
+  <div class="hotel-grid">
     <div class="hotel-card">
-      <div class="hotel-icon">🏙️</div>
+      <img class="hotel-img"
+        src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=200&q=80"
+        alt="Kimpton Maa-Lai Bangkok"
+        onerror="this.style.display='none'"/>
       <div>
-        <div class="hotel-name">Kimpton MAA-LAI Bangkok</div>
-        <div class="hotel-detail">曼谷金普顿玛莱酒店 ⭐4.9<br>78 Soi Ton Son, Lumphini<br>📅 4/30 入住 → 5/1 退房</div>
+        <div class="hotel-name">Kimpton Maa-Lai Bangkok</div>
+        <div class="hotel-detail">
+          曼谷金普顿玛莱酒店 ⭐4.9<br>
+          78 Soi Ton Son, Lumphini<br>
+          📅 4/30 入住 → 5/1 退房
+        </div>
+        <a class="hotel-link" href="https://www.kimptonmaalaibangkok.com/" target="_blank">官网 →</a>
       </div>
     </div>
     <div class="hotel-card">
-      <div class="hotel-icon">🌴</div>
+      <img class="hotel-img"
+        src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=200&q=80"
+        alt="Banyan Tree Samui"
+        onerror="this.style.display='none'"/>
       <div>
         <div class="hotel-name">Banyan Tree Samui</div>
-        <div class="hotel-detail">苏梅岛悦榕庄 ⭐4.8<br>99/9 Moo 4, Maret, Koh Samui<br>📅 5/1 入住（15:00可入住）→ 5/4 退房</div>
+        <div class="hotel-detail">
+          苏梅岛悦榕庄 ⭐4.8<br>
+          99/9 Moo 4, Maret, Koh Samui<br>
+          📅 5/1 入住（15:00）→ 5/4 退房
+        </div>
+        <a class="hotel-link" href="https://www.banyantree.com/thailand/samui" target="_blank">官网 →</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== DAY CARDS ===== -->
-<main id="cards-container"></main>
+<!-- DAY CARDS -->
+<div class="days-wrap" id="days-wrap"></div>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <span class="footer-tip">✅ 每人勾选独立保存 · 切换视角不会丢失</span>
+    <span class="footer-tip">✅ 三人勾选独立保存 · 切换视角不丢失</span>
     <button class="reset-btn" onclick="resetAll()">清空当前视角</button>
   </div>
 </footer>
 
 <script>
-  // ===== 当前人 =====
-  let currentPerson = 'damen';
-  const persons = ['damen', 'huoshan', 'panpan'];
-  const personColors = { damen:'#2a9d8f', huoshan:'#e76f51', panpan:'#e9c46a' };
+// ===== 数据 =====
+let cur = 'damen';
 
-  // ===== 行程数据 =====
-  const days = [
-    {
-      id: 'day1',
-      dayClass: 'day-1',
-      emoji: '✈️',
-      date: '4月30日（周三）',
-      title: '启程！飞向曼谷',
-      route: ['上海浦东 07:30', '曼谷素万那普 11:05'],
-      flightTags: ['TG663', '泰国航空'],
-      mapSpots: [
-        { name: '曼谷金普顿玛莱', emoji: '🏨', rating: '4.9' },
-      ],
-      activities: [
-        { emoji: '💆', text: '泰式按摩' },
-        { emoji: '🏯', text: '大皇宫参观' },
-        { emoji: '🛶', text: '水上市场' },
-        { emoji: '🛍️', text: '暹罗百丽宫/ICON SIAM购物' },
-        { emoji: '🍢', text: '考山路街边小吃' },
-        { emoji: '🌃', text: '乍都乍夜市逛吃' },
-        { emoji: '🍽️', text: 'Phensiri Thai Restaurant' },
-      ]
-    },
-    {
-      id: 'day2',
-      dayClass: 'day-2',
-      emoji: '🛫',
-      date: '5月1日（周四）',
-      title: '曼谷 → 苏梅岛',
-      route: ['曼谷素万那普 11:40', '苏梅国际 12:45'],
-      flightTags: ['PG133', '曼谷航空'],
-      mapSpots: [
-        { name: 'Main Terminal (素万那普)', emoji: '🛫', rating: null },
-        { name: 'Banyan Tree Samui', emoji: '🌴', rating: '4.8' },
-      ],
-      activities: [
-        { emoji: '🛒', text: '空港免税店购物' },
-        { emoji: '🍜', text: '机场美食' },
-        { emoji: '🌊', text: '落地即刻奔赴海边' },
-        { emoji: '🏊', text: '悦榕庄泳池初体验' },
-        { emoji: '🍹', text: '下午茶/欢迎饮品' },
-      ]
-    },
-    {
-      id: 'day3',
-      dayClass: 'day-3',
-      emoji: '🏖️',
-      date: '5月2日（周五）',
-      title: '苏梅岛 · 海岛日',
-      route: ['苏梅岛'],
-      flightTags: null,
-      mapSpots: [
-        { name: 'Tree Bridge Zipline', emoji: '🌿', rating: '4.6' },
-        { name: 'Ark Bar', emoji: '🍻', rating: '4.2' },
-        { name: 'Lamai Night Market', emoji: '🌙', rating: '4.2' },
-        { name: 'Coco Tam\'s', emoji: '🥥', rating: '4.4' },
-      ],
-      activities: [
-        { emoji: '🏊', text: '查汶海滩游泳' },
-        { emoji: '🌅', text: '塔玛林海滩看日落' },
-        { emoji: '🤿', text: '出海浮潜/玻璃底船' },
-        { emoji: '🛵', text: '骑摩托环岛' },
-        { emoji: '💅', text: '泰式 SPA' },
-        { emoji: '🌿', text: 'Tree Bridge Zipline 丛林飞索' },
-        { emoji: '🍻', text: 'Ark Bar 海边酒吧' },
-        { emoji: '🔥', text: 'Lamai Night Market 夜市烧烤' },
-      ]
-    },
-    {
-      id: 'day4',
-      dayClass: 'day-4',
-      emoji: '🥥',
-      date: '5月3日（周六）',
-      title: '苏梅岛 · 自由日',
-      route: ['苏梅岛'],
-      flightTags: null,
-      mapSpots: [
-        { name: 'Bar Us', emoji: '🍸', rating: '4.7' },
-        { name: 'Coco Tam\'s', emoji: '🥥', rating: '4.4' },
-        { name: 'Ong Siripan 手信店', emoji: '🎁', rating: '4.0' },
-      ],
-      activities: [
-        { emoji: '🏄', text: '清晨冲浪' },
-        { emoji: '🚣', text: '皮划艇' },
-        { emoji: '🍽️', text: '悬崖餐厅 Coco Tam\'s 看海吃饭' },
-        { emoji: '🍸', text: 'Bar Us 鸡尾酒日落' },
-        { emoji: '🎁', text: 'Ong Siripan 买手信' },
-        { emoji: '😴', text: '慵懒躺平沙滩' },
-        { emoji: '💆', text: '悦榕庄 SPA 放松' },
-      ]
-    },
-    {
-      id: 'day5',
-      dayClass: 'day-5',
-      emoji: '🌺',
-      date: '5月4日（周日）',
-      title: '挥别苏梅 · 飞回上海',
-      route: ['苏梅 19:10', '曼谷 20:25', '上海 05:45↑'],
-      flightTags: ['PG180 + TG662', '经停曼谷'],
-      mapSpots: [],
-      activities: [
-        { emoji: '🏃', text: '沙滩晨跑' },
-        { emoji: '🦞', text: '最后一顿海鲜大餐' },
-        { emoji: '🛍️', text: '购物补货/手信打包' },
-        { emoji: '📸', text: '悦榕庄最后打卡留念' },
-        { emoji: '🌙', text: '曼谷候机（凌晨 00:30 起飞）' },
-      ]
-    }
-  ];
+const days = [
+  {
+    id:'d1', cls:'d1', emoji:'✈️',
+    date:'4月30日（周三）', title:'启程！飞向曼谷',
+    route:['上海浦东 07:30','曼谷素万那普 11:05'],
+    ftags:['TG663','泰国航空'],
+    spots:[
+      {
+        name:'Kimpton Maa-Lai Bangkok',
+        type:'5星豪华酒店',rating:'★★★★★ 4.9',
+        emoji:'🏨',
+        img:'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&q=80',
+        url:'https://www.kimptonmaalaibangkok.com/'
+      },
+      {
+        name:'Bar Us — The Drinking Room',
+        type:'鸡尾酒酒吧 · 世界50最佳#15',rating:'★★★★★ 4.7',
+        emoji:'🍸',
+        img:'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=80',
+        url:'https://www.us-bar.com/'
+      },
+      {
+        name:'Phensiri Thai Restaurant',
+        type:'米其林推荐泰式餐厅',rating:'★★★★ 4.4',
+        emoji:'🍜',
+        img:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&q=80',
+        url:'https://www.phensiri.com/'
+      },
+    ],
+    acts:[
+      {e:'💆',t:'泰式传统按摩'},
+      {e:'🏯',t:'大皇宫 & 玉佛寺'},
+      {e:'🛺',t:'嘟嘟车市区游览'},
+      {e:'🛶',t:'湄南河游船'},
+      {e:'🏛️',t:'卧佛寺参观'},
+      {e:'🌃',t:'考山路夜生活'},
+      {e:'🛍️',t:'暹罗百丽宫/ICON SIAM购物'},
+      {e:'🍜',t:'Phensiri 米其林泰餐'},
+      {e:'🍸',t:'Bar Us 世界顶级鸡尾酒'},
+      {e:'🍢',t:'街边小吃探索'},
+      {e:'🌊',t:'乍都乍周末市集'},
+      {e:'🌅',t:'湄南河日落游船'},
+      {e:'🧘',t:'泰式瑜伽体验'},
+      {e:'📸',t:'金普顿酒店拍照打卡'},
+    ]
+  },
+  {
+    id:'d2', cls:'d2', emoji:'🛫',
+    date:'5月1日（周四）', title:'曼谷 → 苏梅岛',
+    route:['曼谷素万那普 11:40','苏梅国际 12:45'],
+    ftags:['PG133','曼谷航空'],
+    spots:[
+      {
+        name:'Banyan Tree Samui',
+        type:'5星度假村 · 私人泳池别墅',rating:'★★★★★ 4.8',
+        emoji:'🌴',
+        img:'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&q=80',
+        url:'https://www.banyantree.com/thailand/samui'
+      },
+    ],
+    acts:[
+      {e:'🛒',t:'素万那普免税店扫货'},
+      {e:'🍜',t:'机场 Food Court'},
+      {e:'🌊',t:'落地即奔海边'},
+      {e:'🏊',t:'悦榕庄私人泳池'},
+      {e:'🍹',t:'入住欢迎饮品'},
+      {e:'🌅',t:'查汶海滩看日落'},
+      {e:'🦞',t:'码头海鲜晚餐'},
+      {e:'💆',t:'悦榕庄 Spa 初体验'},
+      {e:'📸',t:'别墅露台拍照'},
+    ]
+  },
+  {
+    id:'d3', cls:'d3', emoji:'🏖️',
+    date:'5月2日（周五）', title:'苏梅岛 · 海岛探索日',
+    route:['苏梅岛'],
+    ftags:null,
+    spots:[
+      {
+        name:'Tree Bridge Zipline',
+        type:'丛林飞索 · 1900 THB/人',rating:'★★★★★ 4.6',
+        emoji:'🌿',
+        img:'https://images.unsplash.com/photo-1547483238-f400e65ccd56?w=400&q=80',
+        url:'https://www.treebridgezipline.com/'
+      },
+      {
+        name:'Ark Bar Beach Club',
+        type:'海滩酒吧 · 火焰表演',rating:'★★★★ 4.2',
+        emoji:'🔥',
+        img:'https://images.unsplash.com/photo-1533777324565-a040eb52facd?w=400&q=80',
+        url:'https://www.ark-bar.com/'
+      },
+      {
+        name:'Lamai Night Market',
+        type:'夜市 · 每日17:00-00:00',rating:'★★★★ 4.2',
+        emoji:'🌙',
+        img:'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=400&q=80',
+        url:'https://www.instagram.com/lamainightmarket/'
+      },
+    ],
+    acts:[
+      {e:'🏊',t:'查汶海滩游泳'},
+      {e:'🤿',t:'浮潜/玻璃底船出海'},
+      {e:'🛵',t:'骑摩托环岛'},
+      {e:'🌿',t:'Tree Bridge 丛林飞索'},
+      {e:'💅',t:'泰式 SPA 下午'},
+      {e:'🔥',t:'Ark Bar 火焰表演+派对'},
+      {e:'🌙',t:'Lamai 夜市烧烤扫货'},
+      {e:'🐘',t:'大象营互动体验'},
+      {e:'🚣',t:'独木舟/皮划艇'},
+      {e:'🌅',t:'塔玛林海滩日落'},
+      {e:'🍺',t:'Chaweng 海边酒吧'},
+      {e:'🏄',t:'冲浪体验课'},
+      {e:'📸',t:'网红海滩拍照'},
+      {e:'🧖',t:'泥浆浴体验'},
+    ]
+  },
+  {
+    id:'d4', cls:'d4', emoji:'🥥',
+    date:'5月3日（周六）', title:'苏梅岛 · 慢慢自由日',
+    route:['苏梅岛'],
+    ftags:null,
+    spots:[
+      {
+        name:'Coco Tam\'s',
+        type:'海滩酒吧 · 渔人码头',rating:'★★★★ 4.4',
+        emoji:'🥥',
+        img:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80',
+        url:'https://www.facebook.com/CoCoTams/'
+      },
+      {
+        name:'Phensiri',
+        type:'米其林推荐 · 查汶海滩',rating:'★★★★ 4.6',
+        emoji:'🍽️',
+        img:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&q=80',
+        url:'https://www.phensiri.com/'
+      },
+      {
+        name:'Ong Siripan',
+        type:'手工娃娃 · 精品手信店',rating:'★★★★ 4.0',
+        emoji:'🎁',
+        img:'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&q=80',
+        url:'https://www.instagram.com/ong_siripan/'
+      },
+    ],
+    acts:[
+      {e:'🌅',t:'悦榕庄看清晨日出'},
+      {e:'🏄',t:'清晨冲浪'},
+      {e:'🥥',t:'Coco Tam\'s 海滩午餐'},
+      {e:'🍽️',t:'Phensiri 米其林晚餐'},
+      {e:'🎁',t:'Ong Siripan 买手信'},
+      {e:'😴',t:'沙滩躺平发呆'},
+      {e:'🍹',t:'悬崖边日落鸡尾酒'},
+      {e:'💆',t:'悦榕庄 Spa 全套'},
+      {e:'🚤',t:'租船出海私游'},
+      {e:'📸',t:'渔人村散步拍照'},
+      {e:'🛍️',t:'Big C 超市扫泰国零食'},
+      {e:'🐚',t:'Fisherman Village 夜市'},
+      {e:'🏊',t:'悦榕庄无边际泳池'},
+      {e:'🌊',t:'波普海滩闲逛'},
+    ]
+  },
+  {
+    id:'d5', cls:'d5', emoji:'🌺',
+    date:'5月4日（周日）', title:'挥别苏梅 · 飞返上海',
+    route:['苏梅 19:10','曼谷 20:25','上海 05:45↑'],
+    ftags:['PG180 + TG662','经停曼谷候机'],
+    spots:[],
+    acts:[
+      {e:'🏃',t:'海边晨跑送别'},
+      {e:'🌅',t:'最后一次日出'},
+      {e:'🦞',t:'最后一顿海鲜大餐'},
+      {e:'🛍️',t:'超市手信最后补货'},
+      {e:'📸',t:'悦榕庄大合照留念'},
+      {e:'💆',t:'机场前悠闲按摩'},
+      {e:'✈️',t:'苏梅→曼谷→上海'},
+      {e:'🌙',t:'曼谷机场候机（凌晨起飞）'},
+    ]
+  },
+];
 
-  // ===== 渲染 =====
-  const container = document.getElementById('cards-container');
+// ===== 渲染 =====
+const wrap = document.getElementById('days-wrap');
+days.forEach(day => {
+  const el = document.createElement('article');
+  el.className = `day-card ${day.cls}`;
+  el.id = `card-${day.id}`;
 
-  days.forEach(day => {
-    const card = document.createElement('article');
-    card.className = `day-card ${day.dayClass}`;
-    card.id = `card-${day.id}`;
+  const routeHtml = day.route.length === 1
+    ? `<span>${day.route[0]}</span>`
+    : day.route.map((r,i)=> i===0
+        ? `<span>${r}</span>`
+        : `<span class="r-arrow">→</span><span>${r}</span>`
+      ).join('');
 
-    const routeHtml = day.route.length === 1
-      ? `<span>${day.route[0]}</span>`
-      : day.route.map((r, i) =>
-          i === 0 ? `<span>${r}</span>` : `<span class="route-arrow">→</span><span>${r}</span>`
-        ).join('');
+  const ftagHtml = day.ftags
+    ? day.ftags.map(t=>`<span class="ftag">${t}</span>`).join('')
+    : '';
 
-    const flightTagHtml = day.flightTags
-      ? day.flightTags.map(t => `<span class="flight-tag">${t}</span>`).join('')
-      : '';
+  const spotsHtml = day.spots.length > 0
+    ? `<div class="subsect-title">📍 精选地点</div>
+       <div class="spots-grid">
+         ${day.spots.map(s=>`
+           <div class="spot-card">
+             ${s.img
+               ? `<img class="spot-img" src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=spot-img-placeholder>${s.emoji}</div>'">`
+               : `<div class="spot-img-placeholder">${s.emoji}</div>`}
+             <div class="spot-info">
+               <div class="spot-name">${s.name}</div>
+               <div class="spot-meta">
+                 <span class="spot-rating">${s.rating}</span>
+                 <span class="spot-type">${s.type}</span>
+               </div>
+               ${s.url ? `<a class="spot-link" href="${s.url}" target="_blank">官网 →</a>` : ''}
+             </div>
+           </div>`).join('')}
+       </div>`
+    : '';
 
-    const mapSpotsHtml = day.mapSpots.length > 0
-      ? `<div class="card-section-title">📍 大门标记的地点</div>
-         <div class="map-spots">
-           ${day.mapSpots.map(s =>
-             `<div class="map-spot">${s.emoji} ${s.name}${s.rating ? ` <span class="spot-star">★${s.rating}</span>` : ''}</div>`
-           ).join('')}
-         </div>`
-      : '';
+  const actsHtml = day.acts.map((a,i)=>{
+    const key = skey(day.id, i);
+    const chk = isChk(key);
+    return `<label class="act-item${chk?' checked':''}" data-did="${day.id}" data-idx="${i}">
+      <input type="checkbox" ${chk?'checked':''}/>
+      <span class="cb-box"><span class="cb-tick">✓</span></span>
+      <span class="act-emoji">${a.e}</span>
+      <span class="act-text">${a.t}</span>
+    </label>`;
+  }).join('');
 
-    const activitiesHtml = day.activities.map((act, idx) => {
-      const key = storageKey(day.id, idx);
-      const checked = isChecked(key);
-      return `
-        <label class="activity-item${checked ? ' checked' : ''}" data-dayid="${day.id}" data-idx="${idx}">
-          <input type="checkbox" ${checked ? 'checked' : ''} />
-          <span class="checkbox-box"><span class="checkbox-tick">✓</span></span>
-          <span class="activity-emoji">${act.emoji}</span>
-          <span class="activity-text">${act.text}</span>
-        </label>`;
-    }).join('');
-
-    const checkedCount = countChecked(day);
-
-    card.innerHTML = `
-      <div class="card-header">
-        <div class="card-emoji">${day.emoji}</div>
-        <div class="card-header-text">
-          <div class="card-date">${day.date}</div>
-          <div class="card-title">${day.title}</div>
-          <div class="card-route">${routeHtml}</div>
-          ${flightTagHtml ? `<div class="card-flight-info">${flightTagHtml}</div>` : ''}
-        </div>
-        <div class="card-progress">
-          <div class="card-count" id="count-${day.id}">${checkedCount}</div>
-          <div class="card-count-label">已选 / ${day.activities.length}</div>
-        </div>
+  el.innerHTML = `
+    <div class="card-stripe"></div>
+    <div class="card-head">
+      <div class="card-emoji">${day.emoji}</div>
+      <div class="card-htext">
+        <div class="card-date">${day.date}</div>
+        <div class="card-title">${day.title}</div>
+        <div class="card-route">${routeHtml}</div>
+        ${ftagHtml ? `<div class="card-ftags">${ftagHtml}</div>` : ''}
       </div>
-      <div class="card-body">
-        ${mapSpotsHtml}
-        <div class="card-section-title">✅ 活动清单</div>
-        <div class="activities-grid" id="grid-${day.id}">${activitiesHtml}</div>
-      </div>`;
+      <div class="card-counter">
+        <div class="c-num" id="cnt-${day.id}">${cntChk(day)}</div>
+        <div class="c-label">已选 / ${day.acts.length}</div>
+      </div>
+    </div>
+    <div class="card-body">
+      ${spotsHtml}
+      <div class="subsect-title">✅ 活动清单</div>
+      <div class="acts-grid">${actsHtml}</div>
+    </div>`;
 
-    container.appendChild(card);
+  wrap.appendChild(el);
+});
+
+// ===== Storage helpers =====
+function skey(dayId, idx){ return `trip26_${cur}_${dayId}_${idx}`; }
+function isChk(key){ return localStorage.getItem(key)==='1'; }
+function cntChk(day){ return day.acts.reduce((n,_,i)=> n+(isChk(skey(day.id,i))?1:0), 0); }
+
+// ===== Checkbox =====
+document.addEventListener('click', e=>{
+  const lbl = e.target.closest('.act-item');
+  if (!lbl) return;
+  e.preventDefault();
+  const dayId = lbl.dataset.did, idx=+lbl.dataset.idx;
+  const cb = lbl.querySelector('input');
+  cb.checked = !cb.checked;
+  lbl.classList.toggle('checked', cb.checked);
+  localStorage.setItem(skey(dayId,idx), cb.checked?'1':'0');
+  updCnt(dayId); updProgress();
+});
+
+function updCnt(dayId){
+  const day = days.find(d=>d.id===dayId);
+  const el = document.getElementById(`cnt-${dayId}`);
+  if(el && day) el.textContent = cntChk(day);
+}
+
+function updProgress(){
+  let tot=0, chk=0;
+  days.forEach(d=> d.acts.forEach((_,i)=>{ tot++; if(isChk(skey(d.id,i))) chk++; }));
+  const pct = tot ? Math.round(chk/tot*100) : 0;
+  document.getElementById('prog-text').textContent = `已规划 ${chk} / ${tot} 项`;
+  document.getElementById('prog-pct').textContent = pct+'%';
+  document.getElementById('prog-fill').style.width = pct+'%';
+}
+
+function refreshAll(){
+  document.querySelectorAll('.act-item').forEach(lbl=>{
+    const key = skey(lbl.dataset.did, +lbl.dataset.idx);
+    const chk = isChk(key);
+    lbl.querySelector('input').checked = chk;
+    lbl.classList.toggle('checked', chk);
   });
+  days.forEach(d=> updCnt(d.id));
+  updProgress();
+}
 
-  // ===== 存储 key =====
-  function storageKey(dayId, idx) {
-    return `trip2026_${currentPerson}_${dayId}_${idx}`;
-  }
-  function isChecked(key) {
-    return localStorage.getItem(key) === '1';
-  }
-  function countChecked(day) {
-    return day.activities.reduce((n, _, idx) =>
-      n + (localStorage.getItem(storageKey(day.id, idx)) === '1' ? 1 : 0), 0);
-  }
+// ===== Person switch =====
+function switchPerson(p){
+  cur=p;
+  document.querySelectorAll('.person-tab').forEach(b=> b.classList.toggle('active', b.dataset.p===p));
+  refreshAll();
+}
 
-  // ===== Checkbox 交互 =====
-  document.addEventListener('click', e => {
-    const label = e.target.closest('.activity-item');
-    if (!label) return;
-    e.preventDefault();
-    const dayId = label.dataset.dayid;
-    const idx = parseInt(label.dataset.idx);
-    const key = storageKey(dayId, idx);
-    const cb = label.querySelector('input[type="checkbox"]');
-    cb.checked = !cb.checked;
-    label.classList.toggle('checked', cb.checked);
-    localStorage.setItem(key, cb.checked ? '1' : '0');
-    updateProgress();
-    updateCardCount(dayId);
-  });
+// ===== Reset =====
+function resetAll(){
+  const nm = {damen:'大门',huoshan:'火山',panpan:'攀攀'};
+  if(!confirm(`确定清空 ${nm[cur]} 的所有勾选吗？`)) return;
+  days.forEach(d=> d.acts.forEach((_,i)=> localStorage.removeItem(skey(d.id,i))));
+  refreshAll();
+}
 
-  function updateCardCount(dayId) {
-    const day = days.find(d => d.id === dayId);
-    if (!day) return;
-    const el = document.getElementById(`count-${dayId}`);
-    if (el) el.textContent = countChecked(day);
-  }
-
-  // ===== 进度 =====
-  function updateProgress() {
-    let total = 0, checked = 0;
-    days.forEach(day => {
-      day.activities.forEach((_, idx) => {
-        total++;
-        if (localStorage.getItem(storageKey(day.id, idx)) === '1') checked++;
-      });
-    });
-    const pct = total === 0 ? 0 : Math.round(checked / total * 100);
-    document.getElementById('global-label').textContent = `已规划 ${checked} / ${total} 项活动（${pct}%）`;
-    document.getElementById('global-fill').style.width = pct + '%';
-  }
-
-  // ===== 刷新所有卡片 checkbox 状态 =====
-  function refreshAllCheckboxes() {
-    document.querySelectorAll('.activity-item').forEach(label => {
-      const dayId = label.dataset.dayid;
-      const idx = parseInt(label.dataset.idx);
-      const key = storageKey(dayId, idx);
-      const checked = isChecked(key);
-      const cb = label.querySelector('input[type="checkbox"]');
-      cb.checked = checked;
-      label.classList.toggle('checked', checked);
-    });
-    days.forEach(day => updateCardCount(day.id));
-    updateProgress();
-  }
-
-  // ===== 切换人 =====
-  function switchPerson(person) {
-    currentPerson = person;
-    document.querySelectorAll('.person-tab').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.person === person);
-    });
-    refreshAllCheckboxes();
-  }
-
-  // ===== 重置 =====
-  function resetAll() {
-    const nameMap = { damen:'大门', huoshan:'火山', panpan:'攀攀' };
-    if (!confirm(`确定清空 ${nameMap[currentPerson]} 的所有勾选记录吗？`)) return;
-    days.forEach(day => {
-      day.activities.forEach((_, idx) => {
-        localStorage.removeItem(storageKey(day.id, idx));
-      });
-    });
-    refreshAllCheckboxes();
-  }
-
-  // ===== 初始化 =====
-  refreshAllCheckboxes();
+// init
+refreshAll();
 </script>
 </body>
 </html>
