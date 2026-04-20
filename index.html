@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>五一出游计划 · 曼谷 & 苏梅岛</title>
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ocean-blue:    #2A9D8F;
+      --deep-blue:     #264653;
+      --coral:         #E76F51;
+      --sandy:         #F4E4C1;
+      --sandy-light:   #FDF8F0;
+      --sky-blue:      #A8DADC;
+      --white:         #FFFFFF;
+      --text-dark:     #2C3E50;
+      --text-mid:      #5A6E79;
+      --text-light:    #8FA5AF;
+      --shadow:        rgba(38, 70, 83, 0.12);
+      --shadow-hover:  rgba(38, 70, 83, 0.22);
+      --radius:        18px;
+      --radius-sm:     10px;
+      --transition:    0.25s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(160deg, #e0f4f1 0%, #f4e4c1 50%, #fde8d8 100%);
+      min-height: 100vh;
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== Wave Background ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 320px;
+      background: linear-gradient(135deg, var(--deep-blue) 0%, var(--ocean-blue) 60%, var(--sky-blue) 100%);
+      clip-path: ellipse(120% 100% at 50% 0%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 56px 24px 40px;
+      color: var(--white);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50px;
+      padding: 5px 18px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      backdrop-filter: blur(4px);
+    }
+
+    header h1 {
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+
+    header .subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+
+    .header-meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .meta-chip {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ===== Progress Bar ===== */
+    .progress-bar-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      padding: 0 24px;
+    }
+
+    .progress-label {
+      text-align: right;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      background: rgba(255,255,255,0.2);
+      border-radius: 50px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f4d35e, #ee964b);
+      border-radius: 50px;
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+      width: 0%;
+    }
+
+    /* ===== Main Layout ===== */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ===== Day Card ===== */
+    .day-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px var(--shadow);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .day-card:hover {
+      box-shadow: 0 8px 40px var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Card Header */
+    .card-header {
+      padding: 22px 28px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+
+    .day-1 .card-header::before { background: linear-gradient(90deg, #264653, #2a9d8f); }
+    .day-2 .card-header::before { background: linear-gradient(90deg, #e9c46a, #f4a261); }
+    .day-3 .card-header::before { background: linear-gradient(90deg, #48cae4, #0096c7); }
+    .day-4 .card-header::before { background: linear-gradient(90deg, #06d6a0, #1b9aaa); }
+    .day-5 .card-header::before { background: linear-gradient(90deg, #f4d35e, #ee964b); }
+
+    .card-emoji {
+      font-size: 2.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    .card-header-text { flex: 1; }
+
+    .card-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 3px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .card-route {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .route-arrow {
+      color: var(--coral);
+      font-weight: 700;
+    }
+
+    .card-progress {
+      flex-shrink: 0;
+      text-align: center;
+      align-self: center;
+    }
+
+    .card-count {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ocean-blue);
+      line-height: 1;
+    }
+
+    .card-count-label {
+      font-size: 0.65rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* Card Body */
+    .card-body {
+      padding: 20px 28px 24px;
+    }
+
+    .activities-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    /* Checkbox Item */
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--sandy-light);
+      border-radius: var(--radius-sm);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+      user-select: none;
+    }
+
+    .activity-item:hover {
+      background: #eef9f7;
+      border-color: var(--sky-blue);
+      transform: scale(1.01);
+    }
+
+    .activity-item.checked {
+      background: linear-gradient(135deg, #e6f7f5, #d0f0ec);
+      border-color: var(--ocean-blue);
+    }
+
+    .activity-item input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #c8d8db;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition);
+      background: var(--white);
+    }
+
+    .activity-item.checked .checkbox-box {
+      background: var(--ocean-blue);
+      border-color: var(--ocean-blue);
+    }
+
+    .checkbox-tick {
+      display: none;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .activity-item.checked .checkbox-tick {
+      display: block;
+    }
+
+    .activity-emoji {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .activity-text {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .activity-item.checked .activity-text {
+      color: var(--ocean-blue);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 24px 48px;
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      box-shadow: 0 2px 16px var(--shadow);
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-tip {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+    }
+
+    .reset-btn {
+      background: none;
+      border: 1.5px solid var(--coral);
+      color: var(--coral);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .reset-btn:hover {
+      background: var(--coral);
+      color: white;
+    }
+
+    /* ===== Decorative Wave ===== */
+    .wave-divider {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: rgba(42, 157, 143, 0.3);
+      font-size: 1.4rem;
+      letter-spacing: 8px;
+      margin: -10px 0 4px;
+      pointer-events: none;
+    }
+
+    /* ===== Scrollbar ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--sky-blue); border-radius: 3px; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      header { padding: 44px 16px 32px; }
+      .card-header { padding: 18px 18px 14px; flex-wrap: wrap; }
+      .card-body { padding: 16px 18px 20px; }
+      .activities-grid { grid-template-columns: 1fr 1fr; }
+      .card-emoji { font-size: 2rem; }
+      .card-title { font-size: 1.05rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 380px) {
+      .activities-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Animation ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .day-card {
+      animation: fadeUp 0.5s ease both;
+    }
+    .day-card:nth-child(1) { animation-delay: 0.05s; }
+    .day-card:nth-child(2) { animation-delay: 0.12s; }
+    .day-card:nth-child(3) { animation-delay: 0.19s; }
+    .day-card:nth-child(4) { animation-delay: 0.26s; }
+    .day-card:nth-child(5) { animation-delay: 0.33s; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-badge">五一出游计划 2026</div>
+    <h1>曼谷 · 苏梅岛</h1>
+    <p class="subtitle">4月30日 — 5月4日 · 5天4夜南洋度假之旅</p>
+    <div class="header-meta">
+      <span class="meta-chip">✈️ 出发地：上海</span>
+      <span class="meta-chip">🗓 5天4夜</span>
+      <span class="meta-chip">🏝 苏梅岛海岛游</span>
+    </div>
+  </header>
+
+  <!-- Global Progress -->
+  <div class="progress-bar-wrap">
+    <div class="progress-label" id="global-label">已规划 0 / 0 项活动</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="global-fill"></div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <main id="cards-container"></main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-tip">✅ 勾选状态已自动保存，刷新页面不会丢失</span>
+      <button class="reset-btn" onclick="resetAll()">清空全部勾选</button>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Data =====
+    const days = [
+      {
+        id: 'day1',
+        dayClass: 'day-1',
+        emoji: '✈️',
+        date: '4月30日（周三）',
+        title: '启程！飞向曼谷',
+        route: ['上海', '曼谷 BKK'],
+        activities: [
+          { emoji: '💆', text: '泰式按摩' },
+          { emoji: '🍢', text: '街边小吃探索（考山路）' },
+          { emoji: '🏯', text: '大皇宫参观' },
+          { emoji: '🛶', text: '水上市场' },
+          { emoji: '🛍️', text: '购物（暹罗百丽宫/ICON SIAM）' },
+          { emoji: '🌃', text: '夜市逛吃（乍都乍/考山路）' },
+        ]
+      },
+      {
+        id: 'day2',
+        dayClass: 'day-2',
+        emoji: '🛫',
+        date: '5月1日（周四）',
+        title: '转机：曼谷 → 苏梅岛',
+        route: ['曼谷', '苏梅岛 USM'],
+        activities: [
+          { emoji: '🛒', text: '空港购物免税店' },
+          { emoji: '🍜', text: '机场美食' },
+          { emoji: '🌊', text: '落地即刻去海边' },
+        ]
+      },
+      {
+        id: 'day3',
+        dayClass: 'day-3',
+        emoji: '🏖️',
+        date: '5月2日（周五）',
+        title: '苏梅岛 · 海岛日',
+        route: ['苏梅岛'],
+        activities: [
+          { emoji: '🏊', text: '查汶海滩游泳' },
+          { emoji: '🌅', text: '塔玛林海滩日落' },
+          { emoji: '🤿', text: '出海浮潜/玻璃底船' },
+          { emoji: '🛵', text: '骑摩托环岛' },
+          { emoji: '💅', text: '泰式 SPA' },
+          { emoji: '🔥', text: '夜市烧烤' },
+        ]
+      },
+      {
+        id: 'day4',
+        dayClass: 'day-4',
+        emoji: '🥥',
+        date: '5月3日（周六）',
+        title: '苏梅岛 · 自由日',
+        route: ['苏梅岛'],
+        activities: [
+          { emoji: '🏄', text: '清晨冲浪' },
+          { emoji: '🚣', text: '皮划艇' },
+          { emoji: '🍽️', text: '悬崖餐厅看海吃饭' },
+          { emoji: '🎁', text: '买手信伴手礼' },
+          { emoji: '😴', text: '慵懒躺平沙滩' },
+          { emoji: '🍹', text: '鸡尾酒日落' },
+        ]
+      },
+      {
+        id: 'day5',
+        dayClass: 'day-5',
+        emoji: '🌺',
+        date: '5月4日（周日）',
+        title: '挥别苏梅 · 返程上海',
+        route: ['苏梅岛', '上海'],
+        activities: [
+          { emoji: '🦞', text: '最后一顿海鲜' },
+          { emoji: '🏃', text: '沙滩晨跑' },
+          { emoji: '🛍️', text: '购物补货' },
+        ]
+      }
+    ];
+
+    // ===== Render =====
+    const container = document.getElementById('cards-container');
+
+    days.forEach(day => {
+      const card = document.createElement('article');
+      card.className = `day-card ${day.dayClass}`;
+
+      // Route HTML
+      const routeHtml = day.route.length === 1
+        ? `<span>${day.route[0]}</span>`
+        : day.route.map((r, i) =>
+            i === 0 ? `<span>${r}</span>` : `<span class="route-arrow">→</span><span>${r}</span>`
+          ).join('');
+
+      // Activities HTML
+      const activitiesHtml = day.activities.map((act, idx) => {
+        const key = `${day.id}_${idx}`;
+        const checked = localStorage.getItem(key) === '1';
+        return `
+          <label class="activity-item${checked ? ' checked' : ''}" data-key="${key}">
+            <input type="checkbox" ${checked ? 'checked' : ''} />
+            <span class="checkbox-box"><span class="checkbox-tick">✓</span></span>
+            <span class="activity-emoji">${act.emoji}</span>
+            <span class="activity-text">${act.text}</span>
+          </label>
+        `;
+      }).join('');
+
+      const checkedCount = day.activities.reduce((n, _, idx) => {
+        return n + (localStorage.getItem(`${day.id}_${idx}`) === '1' ? 1 : 0);
+      }, 0);
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="card-emoji">${day.emoji}</div>
+          <div class="card-header-text">
+            <div class="card-date">${day.date}</div>
+            <div class="card-title">${day.title}</div>
+            <div class="card-route">${routeHtml}</div>
+          </div>
+          <div class="card-progress">
+            <div class="card-count" id="count-${day.id}">${checkedCount}</div>
+            <div class="card-count-label">已选 / ${day.activities.length}</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="activities-label">可选活动</div>
+          <div class="activities-grid" id="grid-${day.id}">
+            ${activitiesHtml}
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    // ===== Checkbox Logic =====
+    document.querySelectorAll('.activity-item').forEach(label => {
+      label.addEventListener('click', () => {
+        const key = label.dataset.key;
+        const cb = label.querySelector('input[type="checkbox"]');
+        cb.checked = !cb.checked;
+        label.classList.toggle('checked', cb.checked);
+        localStorage.setItem(key, cb.checked ? '1' : '0');
+        updateProgress();
+      });
+    });
+
+    // ===== Progress =====
+    function updateProgress() {
+      let total = 0, checked = 0;
+      days.forEach(day => {
+        day.activities.forEach((_, idx) => {
+          total++;
+          const isChecked = localStorage.getItem(`${day.id}_${idx}`) === '1';
+          if (isChecked) checked++;
+        });
+        // Update per-card counter
+        const dayChecked = day.activities.reduce((n, _, idx) =>
+          n + (localStorage.getItem(`${day.id}_${idx}`) === '1' ? 1 : 0), 0);
+        const countEl = document.getElementById(`count-${day.id}`);
+        if (countEl) countEl.textContent = dayChecked;
+      });
+      const pct = total === 0 ? 0 : Math.round(checked / total * 100);
+      document.getElementById('global-label').textContent = `已规划 ${checked} / ${total} 项活动（${pct}%）`;
+      document.getElementById('global-fill').style.width = pct + '%';
+    }
+
+    // ===== Reset =====
+    function resetAll() {
+      if (!confirm('确定清空所有勾选记录吗？')) return;
+      days.forEach(day => {
+        day.activities.forEach((_, idx) => {
+          localStorage.removeItem(`${day.id}_${idx}`);
+        });
+      });
+      document.querySelectorAll('.activity-item').forEach(label => {
+        const cb = label.querySelector('input[type="checkbox"]');
+        cb.checked = false;
+        label.classList.remove('checked');
+      });
+      updateProgress();
+    }
+
+    // Init
+    updateProgress();
+  </script>
+</body>
+</html>
